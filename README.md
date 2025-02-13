@@ -91,6 +91,6 @@ npm run prod
 ```
 
 ## Feedback and Questions
-If you have feedback or questions about this starter, please use the Github Issues on this repo, [()]
+If you have feedback or questions about this starter, please use the Github Issues on this repo, [(https://github.com/spurtcms/Newsprism-nextjs-theme/issues)]
 or Send Email to us [(support@spurtcms.com)]
 
