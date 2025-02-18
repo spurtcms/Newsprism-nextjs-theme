@@ -1,5 +1,5 @@
 # Newsprism-nextjs-theme
-Newsprism – Nextjs Theme, The ultimate solution for creating stunning, responsive and modern websites for News, Newspaper, and Magazine.
+A sleek template for news platforms, featuring categories, subcategories, and dynamic layouts to present articles with clarity.
 
 ![Screenshot of spurtCMS using Presentation Tool to do Visual Editing](https://dev.spurtcms.com/image-resize?name=media/CoverimageNewsTemplate.jpg)
 
