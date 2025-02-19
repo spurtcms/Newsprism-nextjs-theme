@@ -114,7 +114,7 @@ const News_Detail = async ({ params }) => {
     return (
         <>
 
-            <div class="bg-[#FFF6E3]">
+            <div className="bg-[#FFF6E3]">
 
                 <Header_component Header_Api_data={Header_Api_data} Listdata={Listdata} />
                 <News_Detail_component

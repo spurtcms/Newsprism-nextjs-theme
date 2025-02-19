@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
         <body className="bg-[#FFF6E3] dark:bg-[#FFF6E3]">
           <CustomProviders>
 
-            <div class="bg-[#FFF6E3] font-serif">
+            <div className="bg-[#FFF6E3] font-serif">
               {children}
             </div>
           </CustomProviders>

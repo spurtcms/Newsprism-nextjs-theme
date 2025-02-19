@@ -5,32 +5,32 @@ const News_Layout6 = ({ array3 }) => {
     return (
         <>
             <div
-                class="border-[#131313] grid grid-cols-[1fr_1.7fr] max-[1024px]:grid-cols-1 p-[20px_0px] border-b-[1px] border-solid">
+                className="border-[#131313] grid grid-cols-[1fr_1.7fr] max-[1024px]:grid-cols-1 p-[20px_0px] border-b-[1px] border-solid">
                 <div>
                     <Link href={`/news/${array3?.[12]?.slug}`} legacyBehavior>
                         <a
-                            class="mb-[20px] font-normal text-[#131313] text-[24px] hover:underline no-underline leading-[32px]">
+                            className="mb-[20px] font-normal text-[#131313] text-[24px] hover:underline no-underline leading-[32px]">
 
                             {array3?.[12]?.title}
                         </a>
                     </Link>
                     <ul>
-                        <li class="border-[#13131366] mt-[10px] pt-[10px] border-t-[1px] border-solid"
+                        <li className="border-[#13131366] mt-[10px] pt-[10px] border-t-[1px] border-solid"
                             style={{ display: [undefined, null, ""].includes(array3?.[13]?.title) ? "none" : "" }}
                         >
                             <Link href={`/news/${array3?.[13]?.slug}`} legacyBehavior>
                                 <a
-                                    class="font-normal text-[#131313] text-[18px] hover:underline no-underline leading-[22px]">
+                                    className="font-normal text-[#131313] text-[18px] hover:underline no-underline leading-[22px]">
                                     {array3?.[13]?.title}
                                 </a>
                             </Link>
                         </li>
-                        <li class="border-[#13131366] mt-[10px] pt-[10px] border-t-[1px] border-solid"
+                        <li className="border-[#13131366] mt-[10px] pt-[10px] border-t-[1px] border-solid"
                             style={{ display: [undefined, null, ""].includes(array3?.[14]?.title) ? "none" : "" }}
                         >
                             <Link href={`/news/${array3?.[14]?.slug}`} legacyBehavior>
                                 <a
-                                    class="font-normal text-[#131313] text-[18px] hover:underline no-underline leading-[22px]">
+                                    className="font-normal text-[#131313] text-[18px] hover:underline no-underline leading-[22px]">
 
                                     {array3?.[14]?.title}
                                     {console.log("qwqw221", array3?.[14]?.title)}
@@ -42,22 +42,22 @@ const News_Layout6 = ({ array3 }) => {
 
                 </div>
                 <div
-                    class="gap-[8px] border-[#13131366] min-[1025px]:border-s-[1px] grid grid-cols-[1fr_1fr] max-[1024px]:mt-[16px] max-[1024px]:pt-[16px] max-[1024px]:border-t-[1px] border-solid min-[1025px]:ms-[16px] min-[1025px]:ps-[16px]">
+                    className="gap-[8px] border-[#13131366] min-[1025px]:border-s-[1px] grid grid-cols-[1fr_1fr] max-[1024px]:mt-[16px] max-[1024px]:pt-[16px] max-[1024px]:border-t-[1px] border-solid min-[1025px]:ms-[16px] min-[1025px]:ps-[16px]">
                     <div>
                         <Link href={`/news/${array3?.[15]?.slug}`} legacyBehavior>
                             <a
-                                class="mb-[10px] font-normal text-[#131313] text-[26px] hover:underline no-underline leading-[32px]">
+                                className="mb-[10px] font-normal text-[#131313] text-[26px] hover:underline no-underline leading-[32px]">
 
                                 {array3?.[15]?.title}
                             </a>
                         </Link>
 
                         <p
-                            class="line-clamp-4 font-inter font-normal text-[#131313] text-base leading-[24px]"
+                            className="line-clamp-4 font-inter font-normal text-[#131313] text-base leading-[24px]"
                             dangerouslySetInnerHTML={{
                                 __html: array3?.[15]?.description
                                 ?.replaceAll("<br>", " ") // Replace <br> tags with spaces
-                                .replaceAll(/<div class="card[^"]*"(.*?)<\/div>/g, '') // Remove specific <div> tags
+                                .replaceAll(/<div className="card[^"]*"(.*?)<\/div>/g, '') // Remove specific <div> tags
                                 .replaceAll(/<img[^>]*>/g, "") // Remove all <img> tags
                                 .replace(/<h1[^>]*>.*?<\/h1>/, "") // Remove the first <h1> tag and its content
                                 .replace(/p-\[24px_60px_10px\]/g, "") // Remove specific styles
@@ -75,7 +75,7 @@ const News_Layout6 = ({ array3 }) => {
                     <div>
                         <img
                             src={array3?.[15]?.coverImage || "/img/no-image.png"}
-                            alt={array3?.[15]?.title} class="w-full"
+                            alt={array3?.[15]?.title} className="w-full"
                             onError={({ currentTarget }) => {
                                 currentTarget.onerror = null;  // Prevent infinite loop if fallback fails
                                 currentTarget.src = "/img/no-image.png";  // Fallback to a default image
