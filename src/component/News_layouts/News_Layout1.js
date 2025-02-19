@@ -5,22 +5,22 @@ const News_Layout1 = ({ array3 }) => {
     return (
         <>
             <div
-                class="gap-[24px] border-[#131313] border-y-[1px] grid grid-cols-[1fr_1.7fr] max-[1024px]:grid-cols-1 p-[20px_0px] border-solid">
+                className="gap-[24px] border-[#131313] border-y-[1px] grid grid-cols-[1fr_1.7fr] max-[1024px]:grid-cols-1 p-[20px_0px] border-solid">
                 <div>
                     <Link href={`/news/${array3?.[0]?.slug}`} legacyBehavior>
                         <a href="#"
-                            class="mb-[10px] font-normal text-[#131313] text-[26px] hover:underline no-underline leading-[32px]">
+                            className="mb-[10px] font-normal text-[#131313] text-[26px] hover:underline no-underline leading-[32px]">
                             {array3?.[0]?.title}
                         </a>
                     </Link>
                     <div>
 
                         <p
-                            class="line-clamp-4 font-inter font-normal text-[#131313] text-base leading-[24px]"
+                            className="line-clamp-4 font-inter font-normal text-[#131313] text-base leading-[24px]"
                             dangerouslySetInnerHTML={{
                                 __html: array3?.[0]?.description
                                     ?.replaceAll("<br>", " ") // Replace <br> tags with spaces
-                                    .replaceAll(/<div class="card[^"]*"(.*?)<\/div>/g, '') // Remove specific <div> tags
+                                    .replaceAll(/<div className="card[^"]*"(.*?)<\/div>/g, '') // Remove specific <div> tags
                                     .replaceAll(/<img[^>]*>/g, "") // Remove all <img> tags
                                     .replace(/<h1[^>]*>.*?<\/h1>/, "") // Remove the first <h1> tag and its content
                                     .replace(/p-\[24px_60px_10px\]/g, "") // Remove specific styles
@@ -38,7 +38,7 @@ const News_Layout1 = ({ array3 }) => {
                 <div>
                     <img
                         src={array3?.[0]?.coverImage}
-                        alt={array3?.[0]?.title} class="w-full"
+                        alt={array3?.[0]?.title} className="w-full"
                         onError={({ currentTarget }) => {
                             currentTarget.onerror = null;  // Prevent infinite loop if fallback fails
                             currentTarget.src = "/img/no-image.png";  // Fallback to a default image

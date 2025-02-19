@@ -127,7 +127,7 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                     <PageLoader />
 
                 </> : <>
-                    <div class="bg-[#FFF6E3]">
+                    <div className="bg-[#FFF6E3]">
 
                         <Header_component
                             Header_Api_data={Header_Api_data}
@@ -135,9 +135,9 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                             setchannelEntriesList_Array={setchannelEntriesList_Array}
 
                         />
-                        <section class="mx-auto px-4 py-3 lg:p-[13px_16px_32px] max-w-[1280px]">
+                        <section className="mx-auto px-4 py-3 lg:p-[13px_16px_32px] max-w-[1280px]">
 
-                            <section class="gap-[24px] grid grid-cols-[2fr_1.4fr] max-[1024px]:grid-cols-1 mb-[18px]">
+                            <section className="gap-[24px] grid grid-cols-[2fr_1.4fr] max-[1024px]:grid-cols-1 mb-[18px]">
                                 <div>
                                     <img
                                         src={array1?.[0]?.coverImage || '/img/no-image.png'}  // Set a fallback directly in the src
@@ -149,11 +149,11 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                                         }}
                                     />
                                 </div>
-                                <div class="flex flex-col gap-[20px]">
+                                <div className="flex flex-col gap-[20px]">
                                     {array2?.map((val, index) => (
                                         <>
-                                            <div class="gap-[18px] grid grid-cols-[auto_1fr] max-[500px]:grid-cols-1">
-                                                <img src={val?.coverImage || "/img/no-image.png"} class="max-[500px]:w-full h-[134px]" alt={val?.title}
+                                            <div className="gap-[18px] grid grid-cols-[auto_1fr] max-[500px]:grid-cols-1">
+                                                <img src={val?.coverImage || "/img/no-image.png"} className="max-[500px]:w-full h-[134px]" alt={val?.title}
                                                     onError={({ currentTarget }) => {
                                                         currentTarget.onerror = null;  // Prevent infinite loop if fallback fails
                                                         currentTarget.src = "/img/no-image.png";  // Fallback to a default image
@@ -163,12 +163,12 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                                                 />
                                                 {console.log("assasa2", val)}
 
-                                                <div class="flex flex-col justify-between h-full">
+                                                <div className="flex flex-col justify-between h-full">
                                                     <Link href={`/news/${val?.slug}`} legacyBehavior>
-                                                        <a href="" class="mb-[16px] font-normal text-[#131313] text-[20px] hover:underline">
+                                                        <a href="" className="mb-[16px] font-normal text-[#131313] text-[20px] hover:underline">
                                                             {val?.title}</a>
                                                     </Link>
-                                                    <p class="font-inter font-normal text-[#131313] text-[14px]">
+                                                    <p className="font-inter font-normal text-[#131313] text-[14px]">
                                                         {moment(val?.createdOn).format("MMM DD, YYYY [-] hh:mm A")}
                                                     </p>
                                                 </div>
@@ -181,7 +181,7 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                             </section>
 
                             <section
-                                class="gap-[12px] grid grid-cols-[2.1fr_auto_1fr] max-[700px]:grid-cols-1 max-[768px]:grid-cols-[1.5fr_auto_1fr]">
+                                className="gap-[12px] grid grid-cols-[2.1fr_auto_1fr] max-[700px]:grid-cols-1 max-[768px]:grid-cols-[1.5fr_auto_1fr]">
 
                                 <div>
                                     {/* {console.log("8932988932", array1?.[0]?.categories, array1?.[0]?.categories.length)} */}
@@ -194,7 +194,7 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                                                         {val1.map((cat_name, cat_index) => (
                                                             <>
 
-                                                                <p class="bg-[#131313] mb-[10px] p-[6px_12px] w-fit font-inter font-normal text-[12px] text-white">
+                                                                <p className="bg-[#131313] mb-[10px] p-[6px_12px] w-fit font-inter font-normal text-[12px] text-white">
 
                                                                     {cat_name?.categoryName}
                                                                     {console.log("893298893ssss2", cat_name)}
@@ -213,14 +213,14 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                                     <Link href={`/news/${array1?.[0]?.slug}`} legacyBehavior>
 
                                         <a
-                                            class="mb-[10px] text-[#131313] text-[32px] hover:underline no-underline leading-[43px]">
+                                            className="mb-[10px] text-[#131313] text-[32px] hover:underline no-underline leading-[43px]">
                                             {[undefined, null, ""].includes(array1?.[0]?.title) ? <></> : array1?.[0]?.title}
                                         </a>
                                     </Link>
                                     {[undefined, null, ""].includes(array1?.[0]?.authorDetails?.firstName) ? <></> :
                                         <>
 
-                                            <p class="mb-[70px] font-inter font-normal text-[#131313] text-[14px]"> By <span class="">
+                                            <p className="mb-[70px] font-inter font-normal text-[#131313] text-[14px]"> By <span className="">
                                                 {`${array1?.[0]?.authorDetails?.firstName} ${array1?.[0]?.authorDetails?.lastName}`}
                                             </span>
                                                 {/* -June 2, 2024 */}
@@ -298,20 +298,20 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
 
                                 </div>
 
-                                <span class="bg-[#13131366] w-[0.5px] h-full"></span>
+                                <span className="bg-[#13131366] w-[0.5px] h-full"></span>
 
                                 <div>
 
                                     <div
-                                        class="flex max-[700px]:justify-center items-center space-x-[16px] border-[#13131366] py-[20px] border-b last-of-type:border-b-0 border-solid justify-between">
+                                        className="flex max-[700px]:justify-center items-center space-x-[16px] border-[#13131366] py-[20px] border-b last-of-type:border-b-0 border-solid justify-between">
                                         <div>
-                                            <h3 class="mb-[7px] font-[600] font-inter text-[#920406] text-[14px] leading-[24px]">
+                                            <h3 className="mb-[7px] font-[600] font-inter text-[#920406] text-[14px] leading-[24px]">
                                                 {audio_files_Array?.[0]?.title}
                                             </h3>
-                                            {/* <p class="mb-[18px] font-inter font-medium text-[#131313] text-[14px] leading-[20px]">Mick
+                                            {/* <p className="mb-[18px] font-inter font-medium text-[#131313] text-[14px] leading-[20px]">Mick
                                                 reflect on his 1996 interview with a musical icon</p> */}
 
-                                            {/* <p class="mb-[18px] font-inter font-medium text-[#131313] text-[14px] leading-[20px]">
+                                            {/* <p className="mb-[18px] font-inter font-medium text-[#131313] text-[14px] leading-[20px]">
                                                 {audio_files_Array?.[0]?.description}
                                             </p> */}
 
@@ -322,7 +322,7 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                                                     __html: audio_files_Array?.[0]?.description
                                                         ?.replace(/<h1[^>]*>.*?<\/h1>/, "") // Remove the first <h1> tag and its content
                                                         .replaceAll("<br>", " ") // Replace <br> tags with spaces
-                                                        .replaceAll(/<div class="card[^"]*"(.*?)<\/div>/g, '') // Remove specific <div> tags
+                                                        .replaceAll(/<div className="card[^"]*"(.*?)<\/div>/g, '') // Remove specific <div> tags
                                                         .replaceAll(/<img[^>]*>/g, "") // Remove all <img> tags
                                                         .replace(/p-\[24px_60px_10px\]/g, "") // Remove specific styles
                                                 }}
@@ -351,14 +351,14 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                                             <Interweave content={audio_files_Array?.[0]?.description} />
 
 
-                                            {/* <div class="flex items-center space-x-[16px]">
+                                            {/* <div className="flex items-center space-x-[16px]">
                                                 <a href=""
-                                                    class="flex justify-center items-center gap-[4px] bg-[#131313] hover:bg-[#2c2c2c] p-[8px_16px_8px_12px] rounded-[50px] min-w-[97px]">
+                                                    className="flex justify-center items-center gap-[4px] bg-[#131313] hover:bg-[#2c2c2c] p-[8px_16px_8px_12px] rounded-[50px] min-w-[97px]">
                                                     <img src="/img/listen.svg" alt="listem" />
-                                                    <p class="font-inter font-normal text-[#FFFFFF] text-[14px] leading-[20px]">Listen
+                                                    <p className="font-inter font-normal text-[#FFFFFF] text-[14px] leading-[20px]">Listen
                                                     </p>
                                                 </a>
-                                                <p class="font-inter font-medium text-[#131313B0] text-[14px] leading-[20px]">63 Mins
+                                                <p className="font-inter font-medium text-[#131313B0] text-[14px] leading-[20px]">63 Mins
                                                 </p>
                                             </div> */}
 
@@ -370,16 +370,16 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                                     {firstThree_authors.map((val, index) => (
                                         <>
                                             <div
-                                                class="flex flex-col items-center border-[#13131366] py-[20px] border-b last-of-type:border-b-0 border-solid">
+                                                className="flex flex-col items-center border-[#13131366] py-[20px] border-b last-of-type:border-b-0 border-solid">
                                                 <img src={`${imageUrl}${val?.authorDetails?.profileImagePath}`} alt={val?.title} style={{ borderRadius: "50%", height: "60px", width: "60px" }} />
-                                                <h3 class="mt-[10px] mb-[7px] font-[600] font-inter text-[#920406] text-[14px] leading-[24px]">
+                                                <h3 className="mt-[10px] mb-[7px] font-[600] font-inter text-[#920406] text-[14px] leading-[24px]">
 
 
                                                     {`${val?.authorDetails?.firstName} ${val?.authorDetails?.lastName}`}
                                                 </h3>
 
                                                 <a href={`/news/${val?.slug}`}
-                                                    class="font-normal text-[#131313] text-[24px] text-center max-[1024px]:text-[20px] hover:underline no-underline leading-[32px] max-[1024px]:leading-normal">
+                                                    className="font-normal text-[#131313] text-[24px] text-center max-[1024px]:text-[20px] hover:underline no-underline leading-[32px] max-[1024px]:leading-normal">
                                                     {val?.title}
                                                 </a>
                                             </div>
@@ -390,23 +390,23 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
 
 
                                     <div
-                                        class="gap-[10px] border-[#13131366] grid grid-cols-[1fr_auto_1fr] max-[1024px]:grid-cols-1 py-[20px] border-b-[0.5px] last-of-type:border-b-0 border-solid"
+                                        className="gap-[10px] border-[#13131366] grid grid-cols-[1fr_auto_1fr] max-[1024px]:grid-cols-1 py-[20px] border-b-[0.5px] last-of-type:border-b-0 border-solid"
                                         style={{ display: [undefined, null, ""].includes(nextFour_authors?.[0]?.title) ? "none" : "" }}
                                     >
 
                                         {[undefined, null, ""].includes(nextFour_authors?.[0]?.title) ? <></> : <>
-                                            <div class="flex flex-col items-center">
+                                            <div className="flex flex-col items-center">
                                                 <img src={`${imageUrl}${nextFour_authors?.[0]?.authorDetails?.profileImagePath}`} alt={nextFour_authors?.[0]?.title}
                                                     style={{ borderRadius: "50%", height: "60px", width: "60px" }}
                                                 />
                                                 <h3
-                                                    class="mt-[10px] mb-[7px] font-[600] font-inter text-[#920406] text-[14px] leading-[24px]">
+                                                    className="mt-[10px] mb-[7px] font-[600] font-inter text-[#920406] text-[14px] leading-[24px]">
 
 
                                                     {`${nextFour_authors?.[0]?.authorDetails?.firstName} ${nextFour_authors?.[0]?.authorDetails?.lastName}`}
                                                 </h3>
                                                 <Link href={`/news/${nextFour_authors?.[0]?.slug}`} legacyBehavior>
-                                                    <p class="font-normal text-[#131313] text-[18px] text-center leading-[24px] cursor-pointer">
+                                                    <p className="font-normal text-[#131313] text-[18px] text-center leading-[24px] cursor-pointer">
                                                         {nextFour_authors?.[0]?.title}
 
                                                     </p>
@@ -419,19 +419,19 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
 
                                         {[undefined, null, ""].includes(nextFour_authors?.[1]?.title) ? <></> : <>
 
-                                            <span class="bg-[#13131366] w-[0.5px] max-[1024px]:w-full h-full max-[1024px]:h-[0.5px]"></span>
-                                            <div class="flex flex-col items-center">
+                                            <span className="bg-[#13131366] w-[0.5px] max-[1024px]:w-full h-full max-[1024px]:h-[0.5px]"></span>
+                                            <div className="flex flex-col items-center">
                                                 <img src={`${imageUrl}${nextFour_authors?.[1]?.authorDetails?.profileImagePath}`} alt={nextFour_authors?.[1]?.title}
                                                     style={{ borderRadius: "50%", height: "60px", width: "60px" }}
                                                 />
                                                 <h3
-                                                    class="mt-[10px] mb-[7px] font-[600] font-inter text-[#920406] text-[14px] leading-[24px]">
+                                                    className="mt-[10px] mb-[7px] font-[600] font-inter text-[#920406] text-[14px] leading-[24px]">
 
 
                                                     {`${nextFour_authors?.[1]?.authorDetails?.firstName} ${nextFour_authors?.[1]?.authorDetails?.lastName}`}
                                                 </h3>
                                                 <Link href={`/news/${nextFour_authors?.[1]?.slug}`} legacyBehavior>
-                                                    <p class="font-normal text-[#131313] text-[18px] text-center leading-[24px] cursor-pointer">
+                                                    <p className="font-normal text-[#131313] text-[18px] text-center leading-[24px] cursor-pointer">
                                                         {nextFour_authors?.[1]?.title}
 
                                                     </p>
@@ -441,22 +441,22 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                                     </div>
 
                                     <div
-                                        class="gap-[10px] border-[#13131366] grid grid-cols-[1fr_auto_1fr] max-[1024px]:grid-cols-1 py-[20px] border-b last-of-type:border-b-0 border-solid"
+                                        className="gap-[10px] border-[#13131366] grid grid-cols-[1fr_auto_1fr] max-[1024px]:grid-cols-1 py-[20px] border-b last-of-type:border-b-0 border-solid"
                                         style={{ display: [undefined, null, ""].includes(nextFour_authors?.[2]?.title) ? "none" : "" }}
                                     >
                                         {[undefined, null, ""].includes(nextFour_authors?.[2]?.title) ? <></> : <>
-                                            <div class="flex flex-col items-center">
+                                            <div className="flex flex-col items-center">
                                                 <img src={`${imageUrl}${nextFour_authors?.[2]?.authorDetails?.profileImagePath}`} alt={nextFour_authors?.[2]?.title}
                                                     style={{ borderRadius: "50%", height: "60px", width: "60px" }}
                                                 />
                                                 <h3
-                                                    class="mt-[10px] mb-[7px] font-[600] font-inter text-[#920406] text-[14px] leading-[24px]">
+                                                    className="mt-[10px] mb-[7px] font-[600] font-inter text-[#920406] text-[14px] leading-[24px]">
 
 
                                                     {`${nextFour_authors?.[2]?.authorDetails?.firstName} ${nextFour_authors?.[2]?.authorDetails?.lastName}`}
                                                 </h3>
                                                 <Link href={`/news/${nextFour_authors?.[2]?.slug}`} legacyBehavior>
-                                                    <p class="font-normal text-[#131313] text-[18px] text-center leading-[24px] cursor-pointer">
+                                                    <p className="font-normal text-[#131313] text-[18px] text-center leading-[24px] cursor-pointer">
                                                         {nextFour_authors?.[2]?.title}
 
                                                     </p>
@@ -467,19 +467,19 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
 
                                         {[undefined, null, ""].includes(nextFour_authors?.[3]?.title) ? <></> : <>
 
-                                            <span class="bg-[#13131366] w-[0.5px] max-[1024px]:w-full h-full max-[1024px]:h-[0.5px]"></span>
-                                            <div class="flex flex-col items-center">
+                                            <span className="bg-[#13131366] w-[0.5px] max-[1024px]:w-full h-full max-[1024px]:h-[0.5px]"></span>
+                                            <div className="flex flex-col items-center">
                                                 <img src={`${imageUrl}${nextFour_authors?.[3]?.authorDetails?.profileImagePath}`} alt={nextFour_authors?.[3]?.title}
                                                     style={{ borderRadius: "50%", height: "60px", width: "60px" }}
                                                 />
                                                 <h3
-                                                    class="mt-[10px] mb-[7px] font-[600] font-inter text-[#920406] text-[14px] leading-[24px]">
+                                                    className="mt-[10px] mb-[7px] font-[600] font-inter text-[#920406] text-[14px] leading-[24px]">
 
 
                                                     {`${nextFour_authors?.[3]?.authorDetails?.firstName} ${nextFour_authors?.[3]?.authorDetails?.lastName}`}
                                                 </h3>
                                                 <Link href={`/news/${nextFour_authors?.[3]?.slug}`} legacyBehavior>
-                                                    <p class="font-normal text-[#131313] text-[18px] text-center leading-[24px] cursor-pointer">
+                                                    <p className="font-normal text-[#131313] text-[18px] text-center leading-[24px] cursor-pointer">
                                                         {nextFour_authors?.[3]?.title}
 
                                                     </p>
@@ -492,36 +492,36 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
 
 
 
-                                    <div class="border-[#13131366] py-[20px] border-b last-of-type:border-b-0 border-solid">
+                                    <div className="border-[#13131366] py-[20px] border-b last-of-type:border-b-0 border-solid">
 
                                         <h2
-                                            class="border-[#920406] mx-auto mb-[12px] pb-[6px] border-b border-solid w-fit font-normal text-[#131313] text-base leading-[21px]">
+                                            className="border-[#920406] mx-auto mb-[12px] pb-[6px] border-b border-solid w-fit font-normal text-[#131313] text-base leading-[21px]">
                                             TODAY’S CARTOON </h2>
                                         <div>
                                             <img src={cartoon_Array?.[0]?.coverImage}
                                                 alt={cartoon_Array?.[0]?.title}
-                                                class="max-[700px]:mx-auto" />
+                                                className="max-[700px]:mx-auto" />
                                         </div>
 
                                     </div>
 
 
-                                    <div class="border-[#13131366] py-[20px] border-b last-of-type:border-b-0 border-solid">
+                                    <div className="border-[#13131366] py-[20px] border-b last-of-type:border-b-0 border-solid">
 
                                         <h2
-                                            class="border-[#920406] mx-auto mb-[12px] pb-[6px] border-b border-solid w-fit font-normal text-[#131313] text-base leading-[21px]">
+                                            className="border-[#920406] mx-auto mb-[12px] pb-[6px] border-b border-solid w-fit font-normal text-[#131313] text-base leading-[21px]">
                                             LETTER TO THE EDITOR </h2>
-                                        <div class="flex justify-center items-center mt-[30px] mb-[16px]">
+                                        <div className="flex justify-center items-center mt-[30px] mb-[16px]">
                                             <img src="/img/sample-template12.svg" alt="sample template" />
                                         </div>
-                                        <a href="#" class="hover:underline no-underline">
+                                        <a href="#" className="hover:underline no-underline">
                                             <Link href={`/news/${letter_to_edit_Array?.[1]?.slug}`} legacyBehavior>
-                                                <h3 class="mb-[10px] font-normal text-[#131313] text-[24px] text-center leading-[32px]">
+                                                <h3 className="mb-[10px] font-normal text-[#131313] text-[24px] text-center leading-[32px]">
                                                     {letter_to_edit_Array?.[0]?.title}
                                                 </h3>
                                             </Link>
                                         </a>
-                                        {/* <p class="mb-[18px] line-clamp-3 font-inter font-normal text-[#131313] text-base text-center">
+                                        {/* <p className="mb-[18px] line-clamp-3 font-inter font-normal text-[#131313] text-base text-center">
                                     I’d tried so many diets unsuccesfull,
                                     but reading one lady’s weight loss story in the Telegram led me to one that actually
                                     worked....
@@ -529,11 +529,11 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                                 </p> */}
 
                                         <p
-                                            class="mb-[18px] line-clamp-3 font-inter font-normal text-[#131313] text-base text-center"
+                                            className="mb-[18px] line-clamp-3 font-inter font-normal text-[#131313] text-base text-center"
                                             dangerouslySetInnerHTML={{
                                                 __html: letter_to_edit_Array?.[0]?.description
                                                     ?.replaceAll("<br>", " ") // Replace <br> tags with spaces
-                                                    .replaceAll(/<div class="card[^"]*"(.*?)<\/div>/g, '') // Remove specific <div> tags
+                                                    .replaceAll(/<div className="card[^"]*"(.*?)<\/div>/g, '') // Remove specific <div> tags
                                                     .replaceAll(/<img[^>]*>/g, "") // Remove all <img> tags
                                                     .replace(/<h1[^>]*>.*?<\/h1>/, "") // Remove the first <h1> tag and its content
                                                     .replace(/p-\[24px_60px_10px\]/g, "") // Remove specific styles
@@ -550,30 +550,30 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                                     </div>
 
 
-                                    <div class="border-[#13131366] py-[20px] border-b last-of-type:border-b-0 border-solid">
+                                    <div className="border-[#13131366] py-[20px] border-b last-of-type:border-b-0 border-solid">
 
                                         <h2
-                                            class="border-[#920406] mx-auto mb-[12px] pb-[6px] border-b border-solid w-fit font-normal text-[#131313] text-base leading-[21px]">
+                                            className="border-[#920406] mx-auto mb-[12px] pb-[6px] border-b border-solid w-fit font-normal text-[#131313] text-base leading-[21px]">
                                             OBITUARIES </h2>
-                                        <div class="flex justify-center items-center mt-[30px] mb-[16px]">
+                                        <div className="flex justify-center items-center mt-[30px] mb-[16px]">
                                             <img src={obituaries_Array?.[0]?.coverImage}
                                                 alt={obituaries_Array?.[0]?.title} />
                                         </div>
 
                                         <a href={`/news/${obituaries_Array?.[0]?.slug}`}
-                                            class="block border-[#13131366] mb-[10px] pb-[16px] border-b-[0.5px] border-solid font-normal text-[#131313] text-[24px] text-center hover:underline no-underline leading-[32px]">
+                                            className="block border-[#13131366] mb-[10px] pb-[16px] border-b-[0.5px] border-solid font-normal text-[#131313] text-[24px] text-center hover:underline no-underline leading-[32px]">
                                             {obituaries_Array?.[0]?.title}
 
                                         </a>
-                                        <div class="gap-[12px] grid grid-cols-[1fr_auto_1fr] max-[1024px]:grid-cols-1">
+                                        <div className="gap-[12px] grid grid-cols-[1fr_auto_1fr] max-[1024px]:grid-cols-1">
                                             <Link href={`/news/${obituaries_Array?.[1]?.slug}`} legacyBehavior>
-                                                <p class="font-normal text-[#131313] text-[18px] text-center leading-[25px]" style={{ cursor: "pointer" }}>
+                                                <p className="font-normal text-[#131313] text-[18px] text-center leading-[25px]" style={{ cursor: "pointer" }}>
                                                     {obituaries_Array?.[1]?.title}
                                                 </p>
                                             </Link>
-                                            <span class="bg-[#13131366] w-[0.5px] w-full h-full max-[1024px]:h-[0.5px]"></span>
+                                            <span className="bg-[#13131366] w-[0.5px] w-full h-full max-[1024px]:h-[0.5px]"></span>
                                             <Link href={`/news/${obituaries_Array?.[2]?.slug}`} legacyBehavior>
-                                                <p class="font-normal text-[#131313] text-[18px] text-center leading-[25px]" style={{ cursor: "pointer" }}>
+                                                <p className="font-normal text-[#131313] text-[18px] text-center leading-[25px]" style={{ cursor: "pointer" }}>
                                                     {obituaries_Array?.[2]?.title}
                                                 </p>
                                             </Link>
@@ -590,14 +590,14 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                             </section>
 
                             {[undefined, null, 0].includes(array4?.length) ? <></> : <>
-                                <section class="py-[20px]">
-                                    <div class="flex justify-between items-center space-x-3 ">
-                                        <h2 class="mb-[42px] font-normal text-[#131313] text-[32px]">More from News</h2>
-                                        <div class="flex items-center space-x-1">
+                                <section className="py-[20px]">
+                                    <div className="flex justify-between items-center space-x-3 ">
+                                        <h2 className="mb-[42px] font-normal text-[#131313] text-[32px]">More from News</h2>
+                                        <div className="flex items-center space-x-1">
                                             <a
                                                 onClick={(e) => handlePrev(e)}
                                                 disabled={startIndex === 0}
-                                                class="flex justify-center items-center bg-[#920406] hover:bg-[#7e1d1e] w-6 h-6"
+                                                className="flex justify-center items-center bg-[#920406] hover:bg-[#7e1d1e] w-6 h-6"
 
                                                 // className={`px-4 py-2 rounded mr-2 transition-all duration-200 ${startIndex > 0
                                                 //     ? "bg-gray-300 cursor-pointer hover:bg-gray-400"
@@ -606,7 +606,7 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                                                 style={{ cursor: startIndex > 0 ? "pointer" : "default" }}
 
                                             >
-                                                <p class="flex justify-center items-center bg-[#920406] hover:bg-[#7e1d1e] w-6 h-6">
+                                                <p className="flex justify-center items-center bg-[#920406] hover:bg-[#7e1d1e] w-6 h-6">
                                                     <img src="/img/left-arrow.svg" alt="" />
                                                 </p>
                                             </a>
@@ -624,9 +624,9 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
 
                                                 }}
 
-                                                class="flex justify-center items-center bg-[#920406] hover:bg-[#7e1d1e] w-6 h-6"
+                                                className="flex justify-center items-center bg-[#920406] hover:bg-[#7e1d1e] w-6 h-6"
                                             >
-                                                <p class="flex justify-center items-center bg-[#920406] hover:bg-[#7e1d1e] w-6 h-6">
+                                                <p className="flex justify-center items-center bg-[#920406] hover:bg-[#7e1d1e] w-6 h-6">
                                                     <img src="/img/right-arrow.svg" alt="" />
                                                 </p>
                                             </a>
@@ -637,18 +637,18 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
 
                                     <div className="relative">
 
-                                        <div class="gap-[20px] flex overflow-hidden ">
+                                        <div className="gap-[20px] flex overflow-hidden ">
 
                                             {console.log("qqwwqwq", array4)}
                                             {array4?.slice(startIndex, startIndex + visibleCount).map((val, index) => (
                                                 <>
                                                     <Link href={`/news/${val?.slug}`} legacyBehavior>
-                                                        <a class="hover:underline min-w-[234px] ">
-                                                            <div class="mb-[17px] overflow-hidden">
+                                                        <a className="hover:underline min-w-[234px] ">
+                                                            <div className="mb-[17px] overflow-hidden">
                                                                 <img
                                                                     src={val?.coverImage || "/img/no-image.png"}
                                                                     alt={val?.title}
-                                                                    class="w-full h-[154px]"
+                                                                    className="w-full h-[154px]"
                                                                     onError={({ currentTarget }) => {
                                                                         currentTarget.onerror = null;  // Prevent infinite loop if fallback fails
                                                                         currentTarget.src = "/img/no-image.png";  // Fallback to a default image
@@ -657,7 +657,7 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                                                                 />
                                                             </div>
 
-                                                            <h3 class="font-normal text-[#131313] text-[18px] leading-[24px] tracking-[1px]">
+                                                            <h3 className="font-normal text-[#131313] text-[18px] leading-[24px] tracking-[1px]">
                                                                 {val?.title}
                                                             </h3>
 

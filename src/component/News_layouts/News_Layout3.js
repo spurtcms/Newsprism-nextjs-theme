@@ -5,11 +5,11 @@ const News_Layout3 = ({ array3 }) => {
     return (
         <>
             <div
-                class="gap-[24px] border-[#131313] grid grid-cols-[1fr_1.7fr] max-[1024px]:grid-cols-1 p-[20px_0px] border-b-[1px] border-solid">
+                className="gap-[24px] border-[#131313] grid grid-cols-[1fr_1.7fr] max-[1024px]:grid-cols-1 p-[20px_0px] border-b-[1px] border-solid">
                 <div>
                     <Link href={`/news/${array3?.[3]?.slug}`} legacyBehavior>
                         <a
-                            class="mb-[10px] font-normal text-[#131313] text-[26px] hover:underline no-underline leading-[32px]">
+                            className="mb-[10px] font-normal text-[#131313] text-[26px] hover:underline no-underline leading-[32px]">
                             {array3?.[3]?.title}
                         </a>
                     </Link>
@@ -19,7 +19,7 @@ const News_Layout3 = ({ array3 }) => {
                             dangerouslySetInnerHTML={{
                                 __html: array3[3].description
                                     .replaceAll("<br>", " ") // Replace <br> tags with spaces
-                                    .replaceAll(/<div class="card[^"]*"(.*?)<\/div>/g, '') // Remove specific <div> tags
+                                    .replaceAll(/<div className="card[^"]*"(.*?)<\/div>/g, '') // Remove specific <div> tags
                                     .replaceAll(/<img[^>]*>/g, "") // Remove all <img> tags
                                     .replace(/<h1[^>]*>.*?<\/h1>/, "") // Remove the first <h1> tag and its content
                                     .replace(/p-\[24px_60px_10px\]/g, "") // Remove specific styles
@@ -37,7 +37,7 @@ const News_Layout3 = ({ array3 }) => {
                 <div>
                     <img
                         src={array3?.[3]?.coverImage}
-                        alt={array3?.[3]?.title} class="w-full"
+                        alt={array3?.[3]?.title} className="w-full"
                         onError={({ currentTarget }) => {
                             currentTarget.onerror = null;  // Prevent infinite loop if fallback fails
                             currentTarget.src = "/img/no-image.png";  // Fallback to a default image

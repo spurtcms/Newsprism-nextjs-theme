@@ -12,7 +12,7 @@ const sanitizeHTML = (html) => {
     });
     return sanitized
         .replace(/<br>/g, ' ') // Replace <br> with spaces
-        .replace(/<div class="card[^"]*"(.*?)<\/div>/g, '') // Remove specific <div> tags
+        .replace(/<div className="card[^"]*"(.*?)<\/div>/g, '') // Remove specific <div> tags
         .replace(/<h1[^>]*>.*?<\/h1>/, "") // Remove the first <h1> tag and its content
 
 };
@@ -55,11 +55,11 @@ const News_Detail_component = ({ params, detail_result, moreStories_data, More_n
     return (
         <>
 
-            <section class="mx-auto p-[13px_16px_32px] max-w-[1280px]">
+            <section className="mx-auto p-[13px_16px_32px] max-w-[1280px]">
 
 
 
-                <h1 class="mb-[10px] font-normal text-[#131313] text-[50px] leading-[68px]">
+                <h1 className="mb-[10px] font-normal text-[#131313] text-[50px] leading-[68px]">
 
                     {data?.title}
                 </h1>
@@ -70,7 +70,7 @@ const News_Detail_component = ({ params, detail_result, moreStories_data, More_n
 
 
                 <section
-                    class="gap-[12px] border-[#131313] grid grid-cols-[3.1fr_294px] max-[700px]:grid-cols-1 max-[768px]:grid-cols-[1.5fr_1fr] pt-[53px] pb-[53px] border-b-[0.5px] border-solid">
+                    className="gap-[12px] border-[#131313] grid grid-cols-[3.1fr_294px] max-[700px]:grid-cols-1 max-[768px]:grid-cols-[1.5fr_1fr] pt-[53px] pb-[53px] border-b-[0.5px] border-solid">
                     <div className="my-custom-container p-6 bg-gray-50">
                         <div
                             className="my-custom-content text-gray-800 text-base leading-relaxed"
@@ -79,20 +79,20 @@ const News_Detail_component = ({ params, detail_result, moreStories_data, More_n
                             }}
                         ></div>
                     </div>
-                    <div class="flex flex-col h-full">
-                        <div class="mb-[30px] pl-[12px] max-[700px]:pl-0">
+                    <div className="flex flex-col h-full">
+                        <div className="mb-[30px] pl-[12px] max-[700px]:pl-0">
 
-                            <div class="border-[#13131366] mb-[20px] pb-[20px] border-b border-solid">
-                                <h3 class="mb-[6px] font-[600] font-inter text-[#131313] text-[16px] leading-[19px]">
+                            <div className="border-[#13131366] mb-[20px] pb-[20px] border-b border-solid">
+                                <h3 className="mb-[6px] font-[600] font-inter text-[#131313] text-[16px] leading-[19px]">
                                     {`${data?.authorDetails?.firstName} ${data?.authorDetails?.lastName}`}
                                 </h3>
-                                <p class="font-inter font-normal text-[#131313D4] text-[16px] leading-[19px]">
+                                <p className="font-inter font-normal text-[#131313D4] text-[16px] leading-[19px]">
                                     {data?.authorDetails?.roleName}
                                 </p>
                             </div>
 
-                            <div class="border-[#13131366] mb-[20px] pb-[20px] border-b border-solid">
-                                <p class="mb-[16px] font-inter font-normal text-[#13131399] text-[14px] leading-[24px]">
+                            <div className="border-[#13131366] mb-[20px] pb-[20px] border-b border-solid">
+                                <p className="mb-[16px] font-inter font-normal text-[#13131399] text-[14px] leading-[24px]">
                                     {/* 02
                                     January 2025,
                                     8:46 GMT */}
@@ -102,17 +102,17 @@ const News_Detail_component = ({ params, detail_result, moreStories_data, More_n
 
 
                                 </p>
-                                <div class="flex items-center"> <img src="/img/notification.svg" alt="" />
-                                    <h3 class="font-inter font-medium text-[#131313] text-base leading-[19px] ms-[6px]">
+                                <div className="flex items-center"> <img src="/img/notification.svg" alt="" />
+                                    <h3 className="font-inter font-medium text-[#131313] text-base leading-[19px] ms-[6px]">
                                         {data?.viewCount}
                                     </h3>
-                                    <p class="font-inter font-normal text-[#131313] text-base leading-[24px] ms-[4px]">
+                                    <p className="font-inter font-normal text-[#131313] text-base leading-[24px] ms-[4px]">
                                         Interested in this article
                                     </p>
                                 </div>
                             </div>
 
-                            {/* <ul class="flex items-center space-x-[30px]">
+                            {/* <ul className="flex items-center space-x-[30px]">
                                 <li>
                                     <a href="">
                                         <img src="/img/facebook.svg" alt="facebook" />
@@ -133,11 +133,11 @@ const News_Detail_component = ({ params, detail_result, moreStories_data, More_n
 
 
                         </div>
-                        <div class="border-[#13131366] pl-[12px] max-[700px]:pl-0 border-l max-[700px]:border-l-0 border-solid">
+                        <div className="border-[#13131366] pl-[12px] max-[700px]:pl-0 border-l max-[700px]:border-l-0 border-solid">
 
                             <div>
                                 <h3
-                                    class="border-[#131313] pb-[10px] border-b border-solid font-normal text-[#131313] text-[18px] leading-[24px]">
+                                    className="border-[#131313] pb-[10px] border-b border-solid font-normal text-[#131313] text-[18px] leading-[24px]">
                                     More Stories</h3>
 
                                 <ul>
@@ -147,8 +147,8 @@ const News_Detail_component = ({ params, detail_result, moreStories_data, More_n
                                             <Link href={`/news/${val?.slug}`} legacyBehavior>
                                                 <li>
                                                     <a href=""
-                                                        class="flex items-start gap-[10px] border-[#13131366] py-[10px] border-b-[0.5px] border-solid group">
-                                                        <div class="min-w-[83px] h-[83px]">
+                                                        className="flex items-start gap-[10px] border-[#13131366] py-[10px] border-b-[0.5px] border-solid group">
+                                                        <div className="min-w-[83px] h-[83px]">
                                                             <img src={val.coverImage || "/img/no-image.png"} alt={val.title}
                                                                 onError={({ currentTarget }) => {
                                                                     currentTarget.onerror = null;  // Prevent infinite loop if fallback fails
@@ -158,7 +158,7 @@ const News_Detail_component = ({ params, detail_result, moreStories_data, More_n
                                                             />
                                                         </div>
                                                         <h4
-                                                            class="font-normal text-[#131313] text-[14px] group-hover:underline leading-[19px]">
+                                                            className="font-normal text-[#131313] text-[14px] group-hover:underline leading-[19px]">
                                                             {val.title}
                                                         </h4>
                                                     </a>
@@ -174,26 +174,26 @@ const News_Detail_component = ({ params, detail_result, moreStories_data, More_n
 
 
 
-                            <div class="mt-[20px]">
+                            <div className="mt-[20px]">
                                 <h3
-                                    class="border-[#131313] pb-[10px] border-b border-solid font-normal text-[#131313] text-[18px] leading-[24px]">
+                                    className="border-[#131313] pb-[10px] border-b border-solid font-normal text-[#131313] text-[18px] leading-[24px]">
                                     Popular Post</h3>
 
                                 <ul>
                                     <Link href={`/news/${popular_stories_apiResult?.[0]?.slug}`} legacyBehavior>
-                                        <li class="py-[10px]">
-                                            <a href="" class="block relative max-[700px]:mx-auto max-[700px]:w-fit">
-                                                <div class="overflow-hidden group">
+                                        <li className="py-[10px]">
+                                            <a href="" className="block relative max-[700px]:mx-auto max-[700px]:w-fit">
+                                                <div className="overflow-hidden group">
                                                     <img src={popular_stories_apiResult?.[0].coverImage || '/img/no-image.png'} alt=" healty diet"
-                                                        class="group-hover:scale-[1.1] transition-all w-[293px]"
+                                                        className="group-hover:scale-[1.1] transition-all w-[293px]"
                                                         style={{ height: "250px", width: "293px" }}
                                                     />
                                                 </div>
-                                                <div class="bottom-[16px] left-[16px] absolute">
-                                                    <h4 class="mb-[4px] font-normal text-[#B7AEAB] text-[18px] leading-[24px]">
+                                                <div className="bottom-[16px] left-[16px] absolute">
+                                                    <h4 className="mb-[4px] font-normal text-[#B7AEAB] text-[18px] leading-[24px]">
                                                         {popular_stories_apiResult?.[0].title}
                                                     </h4>
-                                                    <p class="font-inter font-normal text-[#B7AEAB] text-[14px]">-
+                                                    <p className="font-inter font-normal text-[#B7AEAB] text-[14px]">-
                                                         {moment(
                                                             popular_stories_apiResult?.[0]?.createdOn
                                                         ).format(
@@ -210,14 +210,14 @@ const News_Detail_component = ({ params, detail_result, moreStories_data, More_n
                                     <Link href={`/news/${popular_stories_apiResult?.[1]?.slug}`} legacyBehavior>
                                         <li>
                                             <a href=""
-                                                class="flex items-start gap-[10px] border-[#13131366] py-[10px] border-b-[0.5px] border-solid group">
-                                                <div class="min-w-[83px]">
+                                                className="flex items-start gap-[10px] border-[#13131366] py-[10px] border-b-[0.5px] border-solid group">
+                                                <div className="min-w-[83px]">
                                                     <img src={popular_stories_apiResult?.[1].coverImage || '/img/no-image.png'} alt="sample image"
                                                         style={{ height: "83px", width: "83px" }}
                                                     />
                                                 </div>
                                                 <h4
-                                                    class="font-normal text-[#131313] text-[14px] group-hover:underline leading-[19px]">
+                                                    className="font-normal text-[#131313] text-[14px] group-hover:underline leading-[19px]">
 
                                                     {popular_stories_apiResult?.[1].title}
                                                 </h4>
@@ -227,14 +227,14 @@ const News_Detail_component = ({ params, detail_result, moreStories_data, More_n
                                     <Link href={`/news/${popular_stories_apiResult?.[2]?.slug}`} legacyBehavior>
                                         <li>
                                             <a href=""
-                                                class="flex items-start gap-[10px] border-[#13131366] py-[10px] border-b-[0.5px] border-solid group">
-                                                <div class="min-w-[83px]">
+                                                className="flex items-start gap-[10px] border-[#13131366] py-[10px] border-b-[0.5px] border-solid group">
+                                                <div className="min-w-[83px]">
                                                     <img src={popular_stories_apiResult?.[2].coverImage || '/img/no-image.png'} alt="sample image"
                                                         style={{ height: "83px", width: "83px" }}
                                                     />
                                                 </div>
                                                 <h4
-                                                    class="font-normal text-[#131313] text-[14px] group-hover:underline leading-[19px]">
+                                                    className="font-normal text-[#131313] text-[14px] group-hover:underline leading-[19px]">
 
                                                     {popular_stories_apiResult?.[2].title}
 
@@ -246,17 +246,17 @@ const News_Detail_component = ({ params, detail_result, moreStories_data, More_n
                             </div>
 
 
-                            <div class="mt-[20px]">
+                            <div className="mt-[20px]">
                                 <h3
-                                    class="border-[#131313] mb-[20px] pb-[10px] border-b border-solid font-normal text-[#131313] text-[18px] leading-[24px]">
+                                    className="border-[#131313] mb-[20px] pb-[10px] border-b border-solid font-normal text-[#131313] text-[18px] leading-[24px]">
                                     Tags</h3>
 
-                                <ul class="flex flex-wrap items-center gap-[7px]">
+                                <ul className="flex flex-wrap items-center gap-[7px]">
                                     {tagsArray.length == 0 || [undefined, null, ""].includes(tagsArray) || tagsArray == "" ? <></> : <>
                                         {tagsArray.map((val, i) => (
                                             <li>
                                                 <a
-                                                    class="inline-block border-[#00000038] hover:border-[#000000] p-[10px_14px] border border-solid font-inter font-normal text-[#000000] text-[14px] leading-[16px]">
+                                                    className="inline-block border-[#00000038] hover:border-[#000000] p-[10px_14px] border border-solid font-inter font-normal text-[#000000] text-[14px] leading-[16px]">
                                                     {val}
                                                 </a>
                                             </li>
@@ -277,15 +277,15 @@ const News_Detail_component = ({ params, detail_result, moreStories_data, More_n
                 </section>
 
 
-                <section class="py-[20px]">
-                    <div class="flex justify-between items-center space-x-3 ">
-                        <h2 class="mb-[42px] font-normal text-[#131313] text-[32px]">More from News</h2>
-                        <div class="flex items-center space-x-1">
+                <section className="py-[20px]">
+                    <div className="flex justify-between items-center space-x-3 ">
+                        <h2 className="mb-[42px] font-normal text-[#131313] text-[32px]">More from News</h2>
+                        <div className="flex items-center space-x-1">
 
                             <a
                                 onClick={(e) => handlePrev(e)}
                                 disabled={startIndex === 0}
-                                class="flex justify-center items-center bg-[#920406] hover:bg-[#7e1d1e] w-6 h-6"
+                                className="flex justify-center items-center bg-[#920406] hover:bg-[#7e1d1e] w-6 h-6"
 
                                 // className={`px-4 py-2 rounded mr-2 transition-all duration-200 ${startIndex > 0
                                 //     ? "bg-gray-300 cursor-pointer hover:bg-gray-400"
@@ -294,7 +294,7 @@ const News_Detail_component = ({ params, detail_result, moreStories_data, More_n
                                 style={{ cursor: startIndex > 0 ? "pointer" : "default" }}
 
                             >
-                                <p class="flex justify-center items-center bg-[#920406] hover:bg-[#7e1d1e] w-6 h-6">
+                                <p className="flex justify-center items-center bg-[#920406] hover:bg-[#7e1d1e] w-6 h-6">
                                     <img src="/img/left-arrow.svg" alt="" />
                                 </p>
                             </a>
@@ -312,9 +312,9 @@ const News_Detail_component = ({ params, detail_result, moreStories_data, More_n
 
                                 }}
 
-                                class="flex justify-center items-center bg-[#920406] hover:bg-[#7e1d1e] w-6 h-6"
+                                className="flex justify-center items-center bg-[#920406] hover:bg-[#7e1d1e] w-6 h-6"
                             >
-                                <p class="flex justify-center items-center bg-[#920406] hover:bg-[#7e1d1e] w-6 h-6">
+                                <p className="flex justify-center items-center bg-[#920406] hover:bg-[#7e1d1e] w-6 h-6">
                                     <img src="/img/right-arrow.svg" alt="" />
                                 </p>
                             </a>
@@ -323,18 +323,18 @@ const News_Detail_component = ({ params, detail_result, moreStories_data, More_n
 
                     <div className="relative">
 
-                        <div class="gap-[20px] flex overflow-hidden ">
+                        <div className="gap-[20px] flex overflow-hidden ">
 
                             {more_News_mapping_arr.slice(startIndex, startIndex + visibleCount).map((val, index) => (
                                 <>
                                     <Link href={`/news/${val?.slug}`} legacyBehavior>
 
-                                        <a class="hover:underline min-w-[234px] ">
-                                            <div class="mb-[17px] overflow-hidden">
+                                        <a className="hover:underline min-w-[234px] ">
+                                            <div className="mb-[17px] overflow-hidden">
                                                 <img
                                                     src={val?.coverImage || "/img/no-image.png"}
                                                     alt={val?.title}
-                                                    class="w-full h-[154px]"
+                                                    className="w-full h-[154px]"
                                                     onError={({ currentTarget }) => {
                                                         currentTarget.onerror = null;  // Prevent infinite loop if fallback fails
                                                         currentTarget.src = "/img/no-image.png";  // Fallback to a default image
@@ -342,7 +342,7 @@ const News_Detail_component = ({ params, detail_result, moreStories_data, More_n
 
                                                 />
                                             </div>
-                                            <h3 class="font-normal text-[#131313] text-[18px] leading-[24px] tracking-[1px]">
+                                            <h3 className="font-normal text-[#131313] text-[18px] leading-[24px] tracking-[1px]">
                                                 {val?.title}
                                             </h3>
 

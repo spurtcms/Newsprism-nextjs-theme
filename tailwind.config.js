@@ -23,6 +23,6 @@ module.exports = {
   mode: 'jit',  // Enable JIT mode
   purge: ['./src/**/*.{html,js,jsx,ts,tsx}'], // Path to your files
 
-  // darkMode: 'class'
+  // darkMode: 'className'
 
 };
