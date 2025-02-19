@@ -20,14 +20,15 @@ export default function RootLayout({ children }) {
         <script
           src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
 
+        <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
       </Head>
       <html lang="en">
-        <body className={inter.className}>
+        <body className="bg-[#FFF6E3] dark:bg-[#FFF6E3]">
           <CustomProviders>
 
-          <div class="bg-[#FFF6E3]">
-            {children}
-          </div>
+            <div class="bg-[#FFF6E3] font-serif">
+              {children}
+            </div>
           </CustomProviders>
 
         </body>

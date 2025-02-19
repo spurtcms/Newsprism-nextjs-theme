@@ -1,100 +1,36 @@
-# A sleek template for news platforms, featuring categories, subcategories, and dynamic layouts to present articles with clarity.
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-![Screenshot of spurtCMS using Presentation Tool to do Visual Editing](https://dev.spurtcms.com/image-resize?name=media/CoverimageNewsTemplate.jpg)
+## Getting Started
 
-Newsprism template offers a streamlined way to display and manage news articles, featuring a clean layout with sections for the latest news, categories, and featured articles. Ideal for news websites, blogs, or any site that requires efficient content management and delivery of timely news updates.
+First, run the development server:
 
-
-It comes with a native  [spurtcms](https://spurtcms.com) that offers features like real-time collaboration and visual editing with live updates.Check out the [project documentaion](https://spurtcms.com/documentation) for more details.
-
-
-The Studio connects to spurtcms, which gives you hosted content APIs with a flexible query language, on-demand image transformations, powerful patching, and more. You can use this starter to kick-start a blog or learn these technologies.
-
-## Features
-
-- Next.js v14
-- Next.js App Router
-- Styling with Tailwind CSS
-- Dark & Light Mode
-- Mobile Responsive
-- skeleton loader 
-- Optimized for SEO using Next.js's Metadata
-- infinite scroll pagination
-- New fetching and caching paradigms
-- Server Actions for mutations
-
-
-
-
-
-
-
-
-
-
-## Deploy your own
-
-
-
-
-## Set up environment variables
-
-Open .env and set  NEXT_PUBLIC_SPURTCMS_NEXTJS_STARTER_THEME_BASEURL  to  be the URL to your GraphQL endpoint in spurtCMS. 
-
-```bash
-NEXT_PUBLIC_SPURTCMS_NEXTJS_STARTER_THEME_BASEURL="https://your-graphql-endpoint-url"
-```
-
- 
-## Step 1. Steps to get API Key
- 
- Before starting our Next JS blog template we need to go inside our spurtCMS Admin and get the default token that we will be using for displaying our content.
-
-1.Inside your spurtCMS Admin Panel [spurtcms](https://dev.spurtcms.com) navigate to API Keys.
-
-![API Key 1 (1)](https://github.com/user-attachments/assets/b3806e8f-1dcd-4f75-88fe-8366b3036d47)
-
-
-
-2.Click on the Action key
-
-![API Key 2 (1)](https://github.com/user-attachments/assets/7976ebe4-40f9-4c65-b99b-195e73ca2f9a)
-
-3.Copy the api key
-
-![API Key 3](https://github.com/user-attachments/assets/a3d34ac1-7243-4931-8a09-6c40c2d005b4)
-
-
-
-Once you have your token add it to your env and it should look like this:
-
-
-
-
-```bash
-NEXT_PUBLIC_SPURTCMS_NEXTJS_STARTER_THEME_TOKEN="your-api-token"
-```
-
-
-
-
-
-## Step 2. Run Next.js in development mode
-```bash
-npm install 
-```
 ```bash
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
-Your blog should be up and running on [http://localhost:3000!](http://localhost:3000!)
 
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Step 3. Run Next.js in production mode
-```bash
-npm run prod
-```
+You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Feedback and Questions
-If you have feedback or questions about this starter, please use the Github Issues on this repo, [https://github.com/spurtcms/Newsprism-nextjs-theme/issues]
-or Send Email to us [(support@spurtcms.com)]
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

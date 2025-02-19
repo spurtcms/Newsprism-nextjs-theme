@@ -4,6 +4,8 @@ module.exports = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/component/**/*.{js,ts,jsx,tsx,mdx}",
+
   ],
   theme: {
     extend: {
@@ -12,7 +14,15 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      fontFamily: {
+        serif: ['DM Serif Display', 'serif'],
+      },
     },
   },
   plugins: [],
+  mode: 'jit',  // Enable JIT mode
+  purge: ['./src/**/*.{html,js,jsx,ts,tsx}'], // Path to your files
+
+  // darkMode: 'class'
+
 };

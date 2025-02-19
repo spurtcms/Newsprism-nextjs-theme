@@ -38,3 +38,77 @@ body {
 .font-inter {
   font-family: "Inter", serif;
 }
+
+/* Unique container styling */
+.my-custom-container {
+  padding: 20px; /* Add padding to the entire container */
+ 
+}
+
+/* Specific styles for content */
+.my-custom-content {
+  color: #333; /* Ensure text color is consistent */
+  line-height: 1.6; /* Better text readability */
+  font-size: 16px; /* Adjust text size */
+}
+
+/* Style for lists */
+.my-custom-content ul, .my-custom-content ol {
+  margin: 16px 0; /* Space above and below lists */
+  padding-left: 20px; /* Indent list items */
+  list-style-position: outside; /* Bullets or numbers outside the content */
+}
+
+.my-custom-content li {
+  margin-bottom: 8px; /* Space between list items */
+}
+
+/* Additional spacing for paragraphs */
+.my-custom-content p {
+  margin: 16px 0; /* Space above and below paragraphs */
+}
+
+/* Handle any headings (optional, remove if not needed) */
+.my-custom-content h2, .my-custom-content h3 {
+  margin: 24px 0 16px; /* Add space around headings */
+  font-weight: bold;
+  color: #111;
+}
+/* Unique container styling */
+.my-custom-container {
+  padding: 20px; /* Add padding to the entire container */
+}
+
+/* Specific styles for content */
+.my-custom-content {
+  color: #333; /* Ensure text color is consistent */
+  line-height: 1.6; /* Better text readability */
+  font-size: 16px; /* Adjust text size */
+}
+
+/* Style for lists */
+.my-custom-content ul, .my-custom-content ol {
+  margin: 16px 0; /* Space above and below lists */
+  padding-left: 20px; /* Indent list items */
+  list-style-position: outside; /* Bullets or numbers outside the content */
+}
+
+.my-custom-content li {
+  margin-bottom: 8px; /* Space between list items */
+}
+
+/* Additional spacing for paragraphs */
+.my-custom-content p {
+  margin: 16px 0; /* Space above and below paragraphs */
+}
+
+/* Handle any headings (optional, remove if not needed) */
+.my-custom-content h2, .my-custom-content h3 {
+  margin: 24px 0 16px; /* Add space around headings */
+  font-weight: bold;
+  color: #111;
+}
+
+.mb-\[30px\] {
+  margin-bottom: 30px;
+}

@@ -20,7 +20,6 @@ export default async function Home({ searchParams }) {
 
   // let  variable_list={ "commonFilter": {"limit": 10,"offset": 0}, "entryFilter": { "categorySlug": "",}, "AdditionalData": { "authorDetails": true, "categories": true }};
 
-  console.log("searchParams", searchParams.type)
 
   let variable_list = {
     "entryFilter": {
@@ -83,6 +82,18 @@ export default async function Home({ searchParams }) {
   const letter_to_editor = await fetchGraphQl(GET_POSTS_LIST_QUERY, variable_letter_to_the_editor)
 
 
+  let variable_audio = {
+    "entryFilter": {
+      "categorySlug": "audio-files"
+    },
+    "AdditionalData": {
+      "categories": true,
+      "authorDetails": true
+    }
+
+  }
+
+  const audio_files = await fetchGraphQl(GET_POSTS_LIST_QUERY, variable_audio)
 
 
   return (
@@ -94,6 +105,7 @@ export default async function Home({ searchParams }) {
           todays_cartoon={todays_cartoon}
           obituaries={obituaries}
           letter_to_editor={letter_to_editor}
+          audio_files={audio_files}
         />
       </Suspense>
     </>

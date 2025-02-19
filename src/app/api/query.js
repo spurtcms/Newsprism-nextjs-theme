@@ -41,6 +41,10 @@ $AdditionalData: EntriesAdditionalData
         tags
         excerpt
         imageAltTag
+        contentChunk{
+                data
+               length
+        }
         categories{
           id
           categoryName
@@ -66,6 +70,7 @@ $AdditionalData: EntriesAdditionalData
           isActive
           profileImagePath
           tenantId  
+          roleName
         }
         additionalFields{
           sections{
@@ -240,6 +245,7 @@ $AdditionalData: EntriesAdditionalData
         modifiedOn
         modifiedBy
         tenantId
+        roleName
       }
       memberProfile{
         id
@@ -324,3 +330,17 @@ export const GET_POSTS_QUERY_CATEGORY = `query($hierarchylevel: Int!){
     }
   }
   `;
+
+
+export const GET_POSTS_visible_count_query = `mutation(
+$id: Int
+$slug: String
+){
+  UpdateEntryViewCount(id:$id,slug:$slug){
+    count
+    status
+  }
+}
+
+
+`

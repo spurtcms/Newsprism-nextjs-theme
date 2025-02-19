@@ -8,15 +8,23 @@ import { useRouter } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { EntryList_Redux_function, header_slug_Reduc_function } from '@/StoreConfiguration/slices/customer';
 
-function Header_component({ Header_Api_data, Listdata, setchannelEntriesList_Array }) {
+function Header_component({ Header_Api_data, Listdata }) {
 
     const header_data = Header_Api_data?.CategoryList?.categorylist
+    const headerslug = useSelector((s) => s.customerRedux.header_slug)
+
 
     const [headerData_activesState, setheaderData_activesState] = useState(-1)
 
-    const [entryList_Apidata, setentryList_Apidata] = useState()
 
     const dispatch = useDispatch()
+
+    let newObject = { id: 1, categoryName: 'Home', categorySlug: "news" };
+    header_data?.unshift(newObject);
+    let uniqueArr = [...new Map(header_data?.map(item => [item.categorySlug, item])).values()];
+
+    console.log("categorySlug", uniqueArr)
+
 
 
     const [header_categorySlug, setheader_categorySlug] = useState()
@@ -50,14 +58,46 @@ function Header_component({ Header_Api_data, Listdata, setchannelEntriesList_Arr
 
     const handleclick_headerData = (e, val, index) => {
         console.log("ewewew", index)
-        setheaderData_activesState(index)
+        setheaderData_activesState(val?.categorySlug)
         setheader_categorySlug([undefined, null, ""].includes(val?.categorySlug) ? "news" : val?.categorySlug)
 
+        // header_category_api([undefined, null, ""].includes(val?.categorySlug) ? "news" : val?.categorySlug)
         router.push(`/`)
 
+        // router.push({
+        //     pathname: '/', // The page to navigate to
+        //     query: {
+        //         name: `${val?.categorySlug || "news"}`, // Query parameters
+        //     });
         dispatch(header_slug_Reduc_function(val?.categorySlug || "news"))
     }
 
+
+
+
+    // const header_category_api = async (val) => {
+
+
+    //     let variable_list = {
+    //         "entryFilter": {
+    //             "categorySlug": `${val}`
+    //         },
+    //         "commonFilter": {
+    //             // "limit": 10,
+    //             // "offset": 0
+    //         },
+    //         "AdditionalData": {
+    //             "categories": true,
+    //             "authorDetails": true
+    //         }
+
+    //     }
+
+    //     const Listdata = await fetchGraphQl(GET_POSTS_LIST_QUERY, variable_list)
+    //     dispatch(EntryList_Redux_function(Listdata?.ChannelEntriesList?.channelEntriesList))
+    //     // setchannelEntriesList_Array(Listdata?.ChannelEntriesList?.channelEntriesList)
+
+    // }
 
     // const Entrylist_api = async (val) => {
 
@@ -103,40 +143,17 @@ function Header_component({ Header_Api_data, Listdata, setchannelEntriesList_Arr
                                     <img src="/img/modal-close.svg" alt="" />
                                 </a>
                             </li>
-                            <li onClick={(e) => handleclick_headerData(e, "news", -1)} style={{ cursor: "pointer" }}>
-                                <Link
-                                    href={{
-                                        pathname: '/',
-                                        query: { type: "news" }
-                                    }} legacyBehavior>
-                                    <a
-                                        class={headerData_activesState == -1 ?
-                                            "font-inter font-medium text-[#131313] text-[14px] [&.active]:text-[#920406] leading-[17px] active" :
-                                            "font-inter font-medium text-[#131313] text-[14px] [&.active]:text-[#920406] leading-[17px] "
-                                        }
 
-                                    >
-
-                                        Home
-                                    </a>
-                                </Link>
-                            </li>
-
-                            {header_data?.map((val, index) => (
+                            {uniqueArr?.map((val, index) => (
                                 <>
                                     {["Letter To The Editor", "Obituaries", "Cartoon"].includes(val?.categoryName) ? <></> : <>
 
 
                                         <li onClick={(e) => handleclick_headerData(e, val, index)} style={{ cursor: "pointer" }}>
 
-                                            <Link
-                                                href={{
-                                                    pathname: '/',
-                                                    query: { type: val.categorySlug }
-                                                }} legacyBehavior>
 
                                                 <a
-                                                    class={headerData_activesState == index ?
+                                                    class={val.categorySlug == headerslug ?
                                                         "font-inter font-medium text-[#131313] text-[14px] [&.active]:text-[#920406] leading-[17px] active" :
                                                         "font-inter font-medium text-[#131313] text-[14px] [&.active]:text-[#920406] leading-[17px] "
                                                     }
@@ -145,7 +162,6 @@ function Header_component({ Header_Api_data, Listdata, setchannelEntriesList_Arr
 
                                                     {val?.categoryName}
                                                 </a>
-                                            </Link>
 
                                         </li>
                                     </>}
@@ -208,7 +224,7 @@ function Header_component({ Header_Api_data, Listdata, setchannelEntriesList_Arr
                         <a class="flex justify-center items-center bg-[#920406] hover:bg-[#7e1d1e] w-6 h-6"
                             onClick={(e) => handlePrev(e)}
                             disabled={startIndex === 0}
-                            className="absolute -left-20 top-1/2 text-[#131313]  bg-white px-3 py-1 rounded"
+                            // className="absolute -left-20 top-1/2 text-[#131313]  bg-white px-3 py-1 rounded"
 
                             // className={`px-4 py-2 rounded mr-2 transition-all duration-200 ${startIndex > 0
                             //     ? "bg-gray-300 cursor-pointer hover:bg-gray-400"
