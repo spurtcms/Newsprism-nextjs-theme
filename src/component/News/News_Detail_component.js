@@ -63,15 +63,9 @@ const News_Detail_component = ({ params, detail_result, moreStories_data, More_n
 
                     {data?.title}
                 </h1>
-
-
-
-
-
-
                 <section
                     className="gap-[12px] border-[#131313] grid grid-cols-[3.1fr_294px] max-[700px]:grid-cols-1 max-[768px]:grid-cols-[1.5fr_1fr] pt-[53px] pb-[53px] border-b-[0.5px] border-solid">
-                    <div className="my-custom-container p-6 bg-gray-50">
+                    <div className="my-custom-container p-6 bg-[#FFF6E3] ">
                         <div
                             className="my-custom-content text-gray-800 text-base leading-relaxed"
                             dangerouslySetInnerHTML={{
