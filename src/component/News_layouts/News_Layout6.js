@@ -33,7 +33,6 @@ const News_Layout6 = ({ array3 }) => {
                                     className="font-normal text-[#131313] text-[18px] hover:underline no-underline leading-[22px]">
 
                                     {array3?.[14]?.title}
-                                    {console.log("qwqw221", array3?.[14]?.title)}
                                 </a>
                             </Link>
                         </li>

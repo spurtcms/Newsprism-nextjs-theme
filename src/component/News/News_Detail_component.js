@@ -1,7 +1,7 @@
 "use client"
 import moment from "moment";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import SocialShare from "../SocialShare/SocialShare";
 import DOMPurify from 'dompurify';
 
@@ -33,7 +33,6 @@ const News_Detail_component = ({ params, detail_result, moreStories_data, More_n
         if (startIndex + visibleCount < more_News_mapping_arr?.length) {
             setStartIndex(startIndex + 1);
         }
-        console.log("startIndex", startIndex)
     };
 
     const handlePrev = () => {
@@ -42,14 +41,12 @@ const News_Detail_component = ({ params, detail_result, moreStories_data, More_n
         }
     };
 
-    console.log("datasss", data)
 
-    const convert_tags_intoArray = data.tags.split(",");
+    const convert_tags_intoArray = data?.tags.split(",");
 
     // Map over the array if you need to transform each tag (e.g., capitalize)
     const tagsArray = convert_tags_intoArray.map(tag => tag.trim()); // Trim to remove extra spaces
 
-    console.log("tagsArray", [undefined, null, ""].includes(tagsArray), tagsArray == "");
 
 
     return (
@@ -136,7 +133,7 @@ const News_Detail_component = ({ params, detail_result, moreStories_data, More_n
 
                                 <ul>
                                     {moreStories_data.ChannelEntriesList.channelEntriesList.slice(0, 6).map((val, i) => (
-                                        <>
+                                        <Fragment key={i}>
 
                                             <Link href={`/news/${val?.slug}`} legacyBehavior>
                                                 <li>
@@ -159,7 +156,7 @@ const News_Detail_component = ({ params, detail_result, moreStories_data, More_n
                                                 </li>
 
                                             </Link>
-                                        </>
+                                        </Fragment>
 
                                     ))}
 
@@ -248,13 +245,14 @@ const News_Detail_component = ({ params, detail_result, moreStories_data, More_n
                                 <ul className="flex flex-wrap items-center gap-[7px]">
                                     {tagsArray.length == 0 || [undefined, null, ""].includes(tagsArray) || tagsArray == "" ? <></> : <>
                                         {tagsArray.map((val, i) => (
-                                            <li>
-                                                <a
-                                                    className="inline-block border-[#00000038] hover:border-[#000000] p-[10px_14px] border border-solid font-inter font-normal text-[#000000] text-[14px] leading-[16px]">
-                                                    {val}
-                                                </a>
-                                            </li>
-
+                                            <Fragment key={i}>
+                                                <li>
+                                                    <a
+                                                        className="inline-block border-[#00000038] hover:border-[#000000] p-[10px_14px] border border-solid font-inter font-normal text-[#000000] text-[14px] leading-[16px]">
+                                                        {val}
+                                                    </a>
+                                                </li>
+                                            </Fragment>
                                         ))}
                                     </>}
                                 </ul>
@@ -320,7 +318,7 @@ const News_Detail_component = ({ params, detail_result, moreStories_data, More_n
                         <div className="gap-[20px] flex overflow-hidden ">
 
                             {more_News_mapping_arr.slice(startIndex, startIndex + visibleCount).map((val, index) => (
-                                <>
+                                <Fragment key={index}>
                                     <Link href={`/news/${val?.slug}`} legacyBehavior>
 
                                         <a className="hover:underline min-w-[234px] ">
@@ -339,10 +337,9 @@ const News_Detail_component = ({ params, detail_result, moreStories_data, More_n
                                             <h3 className="font-normal text-[#131313] text-[18px] leading-[24px] tracking-[1px]">
                                                 {val?.title}
                                             </h3>
-
                                         </a>
                                     </Link>
-                                </>
+                                </Fragment>
                             ))}
                         </div>
                     </div>

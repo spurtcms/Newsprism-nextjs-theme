@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { GET_POSTS_CHANNELLIST_QUERY, GET_POSTS_LIST_QUERY } from '@/app/api/query';
 // import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -23,7 +23,6 @@ function Header_component({ Header_Api_data, Listdata }) {
     header_data?.unshift(newObject);
     let uniqueArr = [...new Map(header_data?.map(item => [item.categorySlug, item])).values()];
 
-    console.log("categorySlug", uniqueArr)
 
 
 
@@ -38,7 +37,6 @@ function Header_component({ Header_Api_data, Listdata }) {
         if (startIndex + visibleCount < firstfour_channelEntry?.length) {
             setStartIndex(startIndex + 1);
         }
-        console.log("startIndex", startIndex)
     };
 
     const handlePrev = () => {
@@ -54,10 +52,8 @@ function Header_component({ Header_Api_data, Listdata }) {
         router.push(`/news/${val?.slug}`)
     }
 
-    console.log("router", router)
 
     const handleclick_headerData = (e, val, index) => {
-        console.log("ewewew", index)
         setheaderData_activesState(val?.categorySlug)
         setheader_categorySlug([undefined, null, ""].includes(val?.categorySlug) ? "news" : val?.categorySlug)
 
@@ -124,7 +120,6 @@ function Header_component({ Header_Api_data, Listdata }) {
     // useEffect(() => {
     //     Entrylist_api()
     // }, [])
-    // console.log("entryList_Apidata", entryList_Apidata)
 
     return (
         <>
@@ -139,14 +134,13 @@ function Header_component({ Header_Api_data, Listdata }) {
                         className="top-0 left-[-100%] z-10 lg:z-0 lg:static fixed flex flex-col lg:items-center gap-[1.5vw] bg-white lg:bg-[transparent] px-5 lg:px-0 py-5 lg:py-0 w-[50%] lg:w-auto max-[400px]:w-full h-full lg:h-auto duration-500 navLinks">
                         <ul className="flex lg:flex-row flex-col gap-[30px] lg:py-[20px] w-full lg:w-auto">
                             <li className="flex justify-end lg:hidden w-full">
-                                <a onClick="{onMenuToggle(this)}" className="ml-auto w-4 text-[30px] cursor-pointer">
+                                <a onClick={(e)=>(onMenuToggle(this))} className="ml-auto w-4 text-[30px] cursor-pointer">
                                     <img src="/img/modal-close.svg" alt="" />
                                 </a>
                             </li>
 
                             {uniqueArr?.map((val, index) => (
-                                <>
-                                 {console.log(val,"dvnjdf")}
+                                <Fragment key={index}>
                                     {["Letter To The Editor", "Obituaries", "Cartoon","Audio Files"].includes(val?.categoryName) ? <></> : <>
 
 
@@ -162,12 +156,11 @@ function Header_component({ Header_Api_data, Listdata }) {
                                                 >
 
                                                     {val?.categoryName}
-                                                    {console.log(val?.categoryName,"ncdjfnsjdf")}
                                                 </a>
 
                                         </li>
                                     </>}
-                                </>
+                                </Fragment>
                             ))}
                         </ul >
                         {/* 
@@ -205,10 +198,8 @@ function Header_component({ Header_Api_data, Listdata }) {
                 <div
                     className="flex justify-between items-center space-x-3 border-[#131313] px-4 lg:px-0 py-[20px] border-b border-solid">
                     {firstfour_channelEntry?.slice(startIndex, startIndex + visibleCount)?.map((val, index) => (
-                        <>
+                 
                             <div className="flex items-center space-x-6" key={index}>
-
-
                                 <a
                                     className="flex justify-center items-center bg-[#920406] hover:bg-[#7e1d1e] px-2 h-[25px] font-inter font-medium text-sm text-white no-underline">TRENDING</a>
                                 <Link href={`/news/${val?.slug}`} legacyBehavior>
@@ -219,8 +210,6 @@ function Header_component({ Header_Api_data, Listdata }) {
                                     </p>
                                 </Link>
                             </div>
-
-                        </>
                     ))}
                     <div className="flex items-center space-x-1">
                         <a className="flex justify-center items-center bg-[#920406] hover:bg-[#7e1d1e] w-6 h-6"

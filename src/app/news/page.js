@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { GET_POSTS_CHANNELLIST_QUERY, GET_POSTS_LIST_QUERY } from "../api/query";
 import { fetchGraphQl } from "../api/graphicql";
 import moment from "moment";
@@ -29,7 +29,6 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
     const obituaries_Array = obituaries?.ChannelEntriesList?.channelEntriesList
     const letter_to_edit_Array = letter_to_editor?.ChannelEntriesList?.channelEntriesList
     const audio_files_Array = audio_files?.ChannelEntriesList?.channelEntriesList
-    console.log("audio_files_Array", audio_files_Array?.[0]?.description)
 
     const authors_data = ![undefined, null, "", 0].includes(channelEntriesList_Array?.length) ? channelEntriesList_Array?.filter((item) => item?.authorDetails?.roleId !== 2) : []
 
@@ -90,24 +89,13 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
         };
 
         fetchData();
-    }, [headerslug]);
-
-    console.log("page_loader", page_loader)
-
-
-
-
-    console.log("filteredData", array1);
-
-
-    console.log("channelEntriesList_Array1", channelEntriesList_Array)
+    }, [headerslug])
 
 
     const handleNext = () => {
         if (startIndex + visibleCount < array4?.length) {
             setStartIndex(startIndex + 1);
         }
-        console.log("startIndex", startIndex)
     };
 
     const handlePrev = () => {
@@ -151,7 +139,7 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                                 </div>
                                 <div className="flex flex-col gap-[20px]">
                                     {array2?.map((val, index) => (
-                                        <>
+                                        <Fragment key={index}>
                                             <div className="gap-[18px] grid grid-cols-[auto_1fr] max-[500px]:grid-cols-1">
                                                 <img src={val?.coverImage || "/img/no-image.png"} className="max-[500px]:w-full h-[134px]" alt={val?.title}
                                                     onError={({ currentTarget }) => {
@@ -161,7 +149,6 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                                                     width={212}
                                                     height={134}
                                                 />
-                                                {console.log("assasa2", val)}
 
                                                 <div className="flex flex-col justify-between h-full">
                                                     <Link href={`/news/${val?.slug}`} legacyBehavior>
@@ -174,7 +161,7 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                                                 </div>
                                             </div>
 
-                                        </>
+                                        </Fragment>
                                     ))}
 
                                 </div>
@@ -184,25 +171,23 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                                 className="gap-[12px] grid grid-cols-[2.1fr_auto_1fr] max-[700px]:grid-cols-1 max-[768px]:grid-cols-[1.5fr_auto_1fr]">
 
                                 <div>
-                                    {/* {console.log("8932988932", array1?.[0]?.categories, array1?.[0]?.categories.length)} */}
                                     {[undefined, null, "", 0].includes(array1?.[0]?.categories?.length) ? <></> :
                                         <>
                                             <div className="flex gap-[12px] flex-wrap ">
 
                                                 {array1?.[0]?.categories.map((val1, index) => (
-                                                    <>
+                                                    <Fragment key={index}>
                                                         {val1.map((cat_name, cat_index) => (
-                                                            <>
+                                                            <Fragment key={index}>
 
                                                                 <p className="bg-[#131313] mb-[10px] p-[6px_12px] w-fit font-inter font-normal text-[12px] text-white">
 
                                                                     {cat_name?.categoryName}
-                                                                    {console.log("893298893ssss2", cat_name)}
                                                                 </p>
-                                                            </>
+                                                            </Fragment>
                                                         ))}
 
-                                                    </>
+                                                    </Fragment>
                                                 ))}
                                             </div>
 
@@ -368,7 +353,7 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                                         </div>
                                     </div>
                                     {firstThree_authors.map((val, index) => (
-                                        <>
+                                        <Fragment key={index}>
                                             <div
                                                 className="flex flex-col items-center border-[#13131366] py-[20px] border-b last-of-type:border-b-0 border-solid">
                                                 <img src={`${imageUrl}${val?.authorDetails?.profileImagePath}`} alt={val?.title} style={{ borderRadius: "50%", height: "60px", width: "60px" }} />
@@ -384,7 +369,7 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                                                 </a>
                                             </div>
 
-                                        </>
+                                        </Fragment>
                                     ))}
 
 
@@ -639,9 +624,8 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
 
                                         <div className="gap-[20px] flex overflow-hidden ">
 
-                                            {console.log("qqwwqwq", array4)}
                                             {array4?.slice(startIndex, startIndex + visibleCount).map((val, index) => (
-                                                <>
+                                                <Fragment key={index}>
                                                     <Link href={`/news/${val?.slug}`} legacyBehavior>
                                                         <a className="hover:underline min-w-[234px] ">
                                                             <div className="mb-[17px] overflow-hidden">
@@ -663,7 +647,7 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
 
                                                         </a>
                                                     </Link>
-                                                </>
+                                                </Fragment>
                                             ))}
                                         </div>
                                     </div>

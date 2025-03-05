@@ -86,7 +86,6 @@ const News_Detail = async ({ params }) => {
     const More_news = await fetchGraphQl(GET_POSTS_LIST_QUERY, variable_morenews)
 
 
-    console.log("visible_count_api", visible_count_api)
 
 
     let variable_list_2 = {
