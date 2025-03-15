@@ -7,31 +7,30 @@ import { fetchGraphQl } from '@/app/api/graphicql';
 import { useRouter } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { EntryList_Redux_function, header_slug_Reduc_function } from '@/StoreConfiguration/slices/customer';
+import NavSkeleton from './skeletonLoader/categoryLoader';
 
 function Header_component({ Header_Api_data, Listdata }) {
 
     const header_data = Header_Api_data?.CategoryList?.categorylist
+    console.log(header_data, "cbhbdhsdbf")
     const headerslug = useSelector((s) => s.customerRedux.header_slug)
-
-
     const [headerData_activesState, setheaderData_activesState] = useState(-1)
-
-
+    const [categoryList, setCategoryList] = useState([]);
     const dispatch = useDispatch()
-
     let newObject = { id: 1, categoryName: 'Home', categorySlug: "news" };
     header_data?.unshift(newObject);
     let uniqueArr = [...new Map(header_data?.map(item => [item.categorySlug, item])).values()];
-
-
-
-
+    console.log(categoryList, "cdbhssd")
     const [header_categorySlug, setheader_categorySlug] = useState()
-    // const router = useRouter()
+    const [loader, setLoader] = useState(false);
     const firstfour_channelEntry = Listdata?.ChannelEntriesList?.channelEntriesList?.slice(0, 4); // First 3 objects
-
     const [startIndex, setStartIndex] = useState(0);
     const visibleCount = 1;
+
+    useEffect(() => {
+        setLoader(true)
+        setCategoryList(uniqueArr)
+    }, [])
 
     const handleNext = () => {
         if (startIndex + visibleCount < firstfour_channelEntry?.length) {
@@ -134,34 +133,44 @@ function Header_component({ Header_Api_data, Listdata }) {
                         className="top-0 left-[-100%] z-10 lg:z-0 lg:static fixed flex flex-col lg:items-center gap-[1.5vw] bg-white lg:bg-[transparent] px-5 lg:px-0 py-5 lg:py-0 w-[50%] lg:w-auto max-[400px]:w-full h-full lg:h-auto duration-500 navLinks">
                         <ul className="flex lg:flex-row flex-col gap-[30px] lg:py-[20px] w-full lg:w-auto">
                             <li className="flex justify-end lg:hidden w-full">
-                                <a onClick={(e)=>(onMenuToggle(this))} className="ml-auto w-4 text-[30px] cursor-pointer">
+                                <a onClick={(e) => (onMenuToggle(this))} className="ml-auto w-4 text-[30px] cursor-pointer">
                                     <img src="/img/modal-close.svg" alt="" />
                                 </a>
                             </li>
+                            {/* {
+                                loader ? <>
+                                    <NavSkeleton />
 
-                            {uniqueArr?.map((val, index) => (
+                                </> : <> */}
+
+
+
+                            {categoryList?.map((val, index) => (
+
                                 <Fragment key={index}>
-                                    {["Letter To The Editor", "Obituaries", "Cartoon","Audio Files"].includes(val?.categoryName) ? <></> : <>
+                                    {["Letter To The Editor", "Obituaries", "Cartoon", "Audio Files"].includes(val?.categoryName) ? <></> : <>
 
 
                                         <li onClick={(e) => handleclick_headerData(e, val, index)} style={{ cursor: "pointer" }}>
 
 
-                                                <a
-                                                    className={val.categorySlug == headerslug ?
-                                                        "font-inter font-medium text-[#131313] text-[14px] [&.active]:text-[#920406] leading-[17px] active" :
-                                                        "font-inter font-medium text-[#131313] text-[14px] [&.active]:text-[#920406] leading-[17px] "
-                                                    }
+                                            <a
+                                                className={val.categorySlug == headerslug ?
+                                                    "font-inter font-medium text-[#131313] text-[14px] [&.active]:text-[#920406] leading-[17px] active" :
+                                                    "font-inter font-medium text-[#131313] text-[14px] [&.active]:text-[#920406] leading-[17px] "
+                                                }
 
-                                                >
+                                            >
 
-                                                    {val?.categoryName}
-                                                </a>
+                                                {val?.categoryName}
+                                            </a>
 
                                         </li>
                                     </>}
                                 </Fragment>
                             ))}
+                            {/* </>
+                            } */}
                         </ul >
                         {/* 
                         <ul
@@ -198,18 +207,18 @@ function Header_component({ Header_Api_data, Listdata }) {
                 <div
                     className="flex justify-between items-center space-x-3 border-[#131313] px-4 lg:px-0 py-[20px] border-b border-solid">
                     {firstfour_channelEntry?.slice(startIndex, startIndex + visibleCount)?.map((val, index) => (
-                 
-                            <div className="flex items-center space-x-6" key={index}>
-                                <a
-                                    className="flex justify-center items-center bg-[#920406] hover:bg-[#7e1d1e] px-2 h-[25px] font-inter font-medium text-sm text-white no-underline">TRENDING</a>
-                                <Link href={`/news/${val?.slug}`} legacyBehavior>
-                                    <p className="line-clamp-1 font-inter font-medium text-[#131313] text-base cursor-pointer"
-                                        onClick={(e) => handleclick_trendingTitle(e, val)}>
 
-                                        {val?.title}
-                                    </p>
-                                </Link>
-                            </div>
+                        <div className="flex items-center space-x-6" key={index}>
+                            <a
+                                className="flex justify-center items-center bg-[#920406] hover:bg-[#7e1d1e] px-2 h-[25px] font-inter font-medium text-sm text-white no-underline">TRENDING</a>
+                            <Link href={`/news/${val?.slug}`} legacyBehavior>
+                                <p className="line-clamp-1 font-inter font-medium text-[#131313] text-base cursor-pointer"
+                                    onClick={(e) => handleclick_trendingTitle(e, val)}>
+
+                                    {val?.title}
+                                </p>
+                            </Link>
+                        </div>
                     ))}
                     <div className="flex items-center space-x-1">
                         <a className="flex justify-center items-center bg-[#920406] hover:bg-[#7e1d1e] w-6 h-6"

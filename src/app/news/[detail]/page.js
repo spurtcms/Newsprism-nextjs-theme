@@ -16,7 +16,7 @@ const News_Detail = async ({ params }) => {
     let visible_count_slug = { "slug": params?.detail };
 
     const visible_count_api = await fetchGraphQl(GET_POSTS_visible_count_query, visible_count_slug)
-
+    console.log(visible_count_api, "countApi")
 
     let variable_category = {
         "categoryFilter": {

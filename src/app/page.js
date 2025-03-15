@@ -6,8 +6,6 @@ import { Suspense } from "react";
 
 export default async function Home({ searchParams }) {
 
-
-
   let variable_category = {
     "categoryFilter": {
       "categoryGroupSlug": "news",

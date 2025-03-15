@@ -18,16 +18,16 @@ const News_Layout7 = ({ array3 }) => {
                         className="line-clamp-4 font-inter font-normal text-[#131313] text-base leading-[24px]"
                         dangerouslySetInnerHTML={{
                             __html: array3?.[16]?.description
-                            ?.replaceAll("<br>", " ") // Replace <br> tags with spaces
-                            .replaceAll(/<div className="card[^"]*"(.*?)<\/div>/g, '') // Remove specific <div> tags
-                            .replaceAll(/<img[^>]*>/g, "") // Remove all <img> tags
-                            .replace(/<h1[^>]*>.*?<\/h1>/, "") // Remove the first <h1> tag and its content
-                            .replace(/p-\[24px_60px_10px\]/g, "") // Remove specific styles
-                            .replace(/<\/?[^>]+(>|$)/g, "") // Remove all remaining HTML tags
-                            .split(/\s+/) // Split text into words
-                            .slice(0, 35) // Limit to the first 35 words
-                            .join(" ") // Join the words back into a string
-                            .concat("...") // Add ellipsis if text is truncated
+                                ?.replaceAll("<br>", " ") // Replace <br> tags with spaces
+                                .replaceAll(/<div className="card[^"]*"(.*?)<\/div>/g, '') // Remove specific <div> tags
+                                .replaceAll(/<img[^>]*>/g, "") // Remove all <img> tags
+                                .replace(/<h1[^>]*>.*?<\/h1>/, "") // Remove the first <h1> tag and its content
+                                .replace(/p-\[24px_60px_10px\]/g, "") // Remove specific styles
+                                .replace(/<\/?[^>]+(>|$)/g, "") // Remove all remaining HTML tags
+                                .split(/\s+/) // Split text into words
+                                .slice(0, 35) // Limit to the first 35 words
+                                .join(" ") // Join the words back into a string
+                                .concat("...") // Add ellipsis if text is truncated
 
                         }}
                     ></p>

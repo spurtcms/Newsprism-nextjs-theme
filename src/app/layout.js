@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Head from "next/head";
 import CustomProviders from "@/StoreConfiguration/CustomProviders";
+import NextTopLoader from "nextjs-toploader";
 // import Header_component from "./component/Header";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -24,6 +25,16 @@ export default function RootLayout({ children }) {
       </Head>
       <html lang="en">
         <body className="bg-[#FFF6E3] dark:bg-[#FFF6E3]">
+          <NextTopLoader
+            color="#920406"
+            initialPosition={0.08}
+            crawlSpeed={200}
+            height={3}
+            crawl={true}
+            showSpinner={false}
+            easing="ease"
+            speed={2000}
+            shadow="0 0 10px #2299DD,0 0 5px #2299DD" />
           <CustomProviders>
 
             <div className="bg-[#FFF6E3] font-serif">

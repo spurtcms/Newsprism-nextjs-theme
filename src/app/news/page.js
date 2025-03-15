@@ -15,61 +15,69 @@ import News_Layout4 from "@/component/News_layouts/News_Layout4";
 import News_Layout5 from "@/component/News_layouts/News_Layout5";
 import News_Layout6 from "@/component/News_layouts/News_Layout6";
 import News_Layout7 from "@/component/News_layouts/News_Layout7";
-import PageLoader from "@/component/Loader/Page_Loader";
+import PageLoader from "@/component/skeletonLoader/Page_Loader";
 import { Interweave } from "interweave";
 
 const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, letter_to_editor, audio_files }) => {
 
 
-    const [data, setData] = useState(null);
-    const [channelEntriesList_Array, setchannelEntriesList_Array] = useState()
+    const [dataCount, setDataCount] = useState(0);
+    const [channelEntriesList_Array, setchannelEntriesList_Array] = useState([])
     const [page_loader, setpage_loader] = useState(false)
-
+    console.log(channelEntriesList_Array, "cjdbfsjdhfshf")
     const cartoon_Array = todays_cartoon?.ChannelEntriesList?.channelEntriesList
     const obituaries_Array = obituaries?.ChannelEntriesList?.channelEntriesList
     const letter_to_edit_Array = letter_to_editor?.ChannelEntriesList?.channelEntriesList
     const audio_files_Array = audio_files?.ChannelEntriesList?.channelEntriesList
-
+    console.log(audio_files, "hsdshjdsds")
     const authors_data = ![undefined, null, "", 0].includes(channelEntriesList_Array?.length) ? channelEntriesList_Array?.filter((item) => item?.authorDetails?.roleId !== 2) : []
-
-
     const firstThree_authors = authors_data.slice(0, 3); // First 3 objects
     const nextFour_authors = authors_data.slice(3, 7);  // Next 4 objects
     const remaining_authors = authors_data.slice(7);    // All other objects
-
-
-
     const [startIndex, setStartIndex] = useState(0);
     const visibleCount = 5;
-
     // Step 1: Segregate into four arrays
     const array1 = channelEntriesList_Array?.filter(obj => obj.featuredEntry === 1);
     const remainingAfterArray1 = channelEntriesList_Array?.filter(obj => obj.featuredEntry !== 1);
-
     const array2 = remainingAfterArray1?.slice(0, 3);
     const remainingAfterArray2 = remainingAfterArray1?.slice(3);
-
-    const array3 = remainingAfterArray2?.slice(0, 17);
-    const array4 = remainingAfterArray2?.slice(11);
-
-
-
+    const array3 = remainingAfterArray2?.slice(0, 12);
+    const array4 = remainingAfterArray2?.slice(13);
+    const [offset, setOffset] = useState(0);
+    console.log(channelEntriesList_Array, "fdjvbdhv")
+    console.log(dataCount, "djbchbf")
     const dispatch = useDispatch()
 
     const headerslug = useSelector((s) => s.customerRedux.header_slug)
 
+    const handleScroll = (e) => {
+
+        const scrollHeight = e.target.documentElement.scrollHeight;
+        const currentHeight = Math.ceil(
+            e.target.documentElement.scrollTop + window.innerHeight
+        );
+        if (currentHeight + 1 >= scrollHeight) {
+            setOffset(offset + 5)
+        }
+    };
 
     useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+    }, [handleScroll]);
+
+
+    useEffect(() => {
+
         setpage_loader(true)
         const fetchData = async () => {
             const variable_list = {
                 "entryFilter": {
                     "categorySlug": `${[undefined, null, ""].includes(headerslug) ? "news" : headerslug}`
                 },
-                "commonFilter": {
-                    // "limit": 10,
-                    // "offset": 0
-                },
+                // "commonFilter": {
+                //     "limit": 5,
+                //     "offset": offset
+                // },
                 "AdditionalData": {
                     "categories": true,
                     "authorDetails": true
@@ -77,9 +85,9 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
             };
 
             try {
-
                 const Listdata_1 = await fetchGraphQl(GET_POSTS_LIST_QUERY, variable_list);
-                setData(Listdata_1); // Set the result in state to render
+                console.log(Listdata_1, "jkdhfksdj")
+                setDataCount(Listdata_1?.ChannelEntriesList?.count); // Set the result in state to render
                 setchannelEntriesList_Array(Listdata_1?.ChannelEntriesList?.channelEntriesList)
                 setpage_loader(false)
             } catch (error) {
@@ -87,9 +95,52 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                 setpage_loader(false)
             }
         };
-
         fetchData();
+
+
     }, [headerslug])
+
+    // useEffect(() => {
+
+    //     setpage_loader(true)
+    //     const fetchData = async () => {
+    //         const variable_list = {
+    //             "entryFilter": {
+    //                 "categorySlug": `${[undefined, null, ""].includes(headerslug) ? "news" : headerslug}`
+    //             },
+    //             "commonFilter": {
+    //                 "limit": 5,
+    //                 "offset": offset
+    //             },
+    //             "AdditionalData": {
+    //                 "categories": true,
+    //                 "authorDetails": true
+    //             }
+    //         };
+
+    //         try {
+    //             const Listdata_1 = await fetchGraphQl(GET_POSTS_LIST_QUERY, variable_list);
+    //             console.log(Listdata_1, "jkdhfksdj")
+    //             setDataCount(Listdata_1?.ChannelEntriesList?.count); // Set the result in state to render
+
+    //             setchannelEntriesList_Array((pre) => [...pre, Listdata_1?.ChannelEntriesList?.channelEntriesList])
+    //             console.log("dchnfsdd")
+
+
+    //             setpage_loader(false)
+
+
+    //         } catch (error) {
+    //             console.error("Error fetching data:", error);
+    //             setpage_loader(false)
+    //         }
+    //     };
+
+
+    //     fetchData();
+
+    // }, [])
+
 
 
     const handleNext = () => {
@@ -110,6 +161,12 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
     return (
         <>
 
+            <Header_component
+                Header_Api_data={Header_Api_data}
+                Listdata={Listdata}
+                setchannelEntriesList_Array={setchannelEntriesList_Array}
+
+            />
             {page_loader == true || [undefined, null, ""].includes(channelEntriesList_Array) ?
                 <>
                     <PageLoader />
@@ -117,12 +174,6 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                 </> : <>
                     <div className="bg-[#FFF6E3]">
 
-                        <Header_component
-                            Header_Api_data={Header_Api_data}
-                            Listdata={Listdata}
-                            setchannelEntriesList_Array={setchannelEntriesList_Array}
-
-                        />
                         <section className="mx-auto px-4 py-3 lg:p-[13px_16px_32px] max-w-[1280px]">
 
                             <section className="gap-[24px] grid grid-cols-[2fr_1.4fr] max-[1024px]:grid-cols-1 mb-[18px]">
@@ -178,7 +229,7 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                                                 {array1?.[0]?.categories.map((val1, index) => (
                                                     <Fragment key={index}>
                                                         {val1.map((cat_name, cat_index) => (
-                                                            <Fragment key={index}>
+                                                            <Fragment >
 
                                                                 <p className="bg-[#131313] mb-[10px] p-[6px_12px] w-fit font-inter font-normal text-[12px] text-white">
 
@@ -262,16 +313,17 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                                                                 <News_Layout5 array3={array3} />
                                                                 <News_Layout6 array3={array3} />
 
-                                                            </> :
-                                                            array3?.length >= 17 ?
+                                                            </>
+                                                            :
+                                                            array3?.length >= 12 ?
                                                                 <>
                                                                     <News_Layout1 array3={array3} />
                                                                     <News_Layout2 array3={array3} />
                                                                     <News_Layout3 array3={array3} />
                                                                     <News_Layout4 array3={array3} />
                                                                     <News_Layout5 array3={array3} />
-                                                                    <News_Layout6 array3={array3} />
-                                                                    <News_Layout7 array3={array3} />
+                                                                    {/* <News_Layout6 array3={array3} /> */}
+                                                                    {/* <News_Layout7 array3={array3} /> */}
                                                                 </>
                                                                 :
 
@@ -279,8 +331,6 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
 
                                                                 </>
                                     }
-
-
                                 </div>
 
                                 <span className="bg-[#13131366] w-[0.5px] h-full"></span>
@@ -350,6 +400,7 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                                         </div>
                                         <div >
                                             <img src={audio_files_Array?.[0]?.coverImage || "/img/no-image.png"} alt={audio_files_Array?.[0]?.title} style={{ width: "103px", height: "111px" }} />
+
                                         </div>
                                     </div>
                                     {firstThree_authors.map((val, index) => (
@@ -499,13 +550,13 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                                         <div className="flex justify-center items-center mt-[30px] mb-[16px]">
                                             <img src="/img/sample-template12.svg" alt="sample template" />
                                         </div>
-                                        <a href="#" className="hover:underline no-underline">
-                                            <Link href={`/news/${letter_to_edit_Array?.[1]?.slug}`} legacyBehavior>
-                                                <h3 className="mb-[10px] font-normal text-[#131313] text-[24px] text-center leading-[32px]">
-                                                    {letter_to_edit_Array?.[0]?.title}
-                                                </h3>
-                                            </Link>
-                                        </a>
+                                        {/* <a href="#" className="hover:underline no-underline"> */}
+                                        <Link href={`/news/${letter_to_edit_Array?.[1]?.slug}`} legacyBehavior className="hover:underline no-underline">
+                                            <h3 className="mb-[10px] font-normal text-[#131313] text-[24px] text-center leading-[32px]">
+                                                {letter_to_edit_Array?.[0]?.title}
+                                            </h3>
+                                        </Link>
+                                        {/* </a> */}
                                         {/* <p className="mb-[18px] line-clamp-3 font-inter font-normal text-[#131313] text-base text-center">
                                     I’d tried so many diets unsuccesfull,
                                     but reading one lady’s weight loss story in the Telegram led me to one that actually
@@ -583,13 +634,11 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                                                 onClick={(e) => handlePrev(e)}
                                                 disabled={startIndex === 0}
                                                 className="flex justify-center items-center bg-[#920406] hover:bg-[#7e1d1e] w-6 h-6"
-
                                                 // className={`px-4 py-2 rounded mr-2 transition-all duration-200 ${startIndex > 0
                                                 //     ? "bg-gray-300 cursor-pointer hover:bg-gray-400"
                                                 //     : "bg-gray-200 cursor-default opacity-50"
                                                 //     }`}
                                                 style={{ cursor: startIndex > 0 ? "pointer" : "default" }}
-
                                             >
                                                 <p className="flex justify-center items-center bg-[#920406] hover:bg-[#7e1d1e] w-6 h-6">
                                                     <img src="/img/left-arrow.svg" alt="" />
@@ -606,7 +655,6 @@ const News_Index = ({ Header_Api_data, Listdata, todays_cartoon, obituaries, let
                                                 style={{
                                                     cursor:
                                                         startIndex + visibleCount < array4.length ? "pointer" : "default",
-
                                                 }}
 
                                                 className="flex justify-center items-center bg-[#920406] hover:bg-[#7e1d1e] w-6 h-6"

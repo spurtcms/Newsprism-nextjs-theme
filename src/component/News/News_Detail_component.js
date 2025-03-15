@@ -22,8 +22,8 @@ const News_Detail_component = ({ params, detail_result, moreStories_data, More_n
 
 
     const data = detail_result?.ChannelEntryDetail
-
     const more_News_mapping_arr = More_news?.ChannelEntriesList?.channelEntriesList?.filter(item => item.slug !== params.detail);
+    console.log(more_News_mapping_arr, "cbdshbcsdbh")
 
     const [popular_stories_apiResult, setpopular_stories_apiResult] = useState(popular_stories?.ChannelEntriesList?.channelEntriesList);
 
@@ -45,8 +45,8 @@ const News_Detail_component = ({ params, detail_result, moreStories_data, More_n
     const convert_tags_intoArray = data?.tags.split(",");
 
     // Map over the array if you need to transform each tag (e.g., capitalize)
-    const tagsArray = convert_tags_intoArray.map(tag => tag.trim()); // Trim to remove extra spaces
-
+    const tagsArray = convert_tags_intoArray?.map(tag => tag.trim()); // Trim to remove extra spaces
+    console.log(tagsArray, "bjdchbdjfdf")
 
 
     return (
@@ -243,7 +243,7 @@ const News_Detail_component = ({ params, detail_result, moreStories_data, More_n
                                     Tags</h3>
 
                                 <ul className="flex flex-wrap items-center gap-[7px]">
-                                    {tagsArray.length == 0 || [undefined, null, ""].includes(tagsArray) || tagsArray == "" ? <></> : <>
+                                    {tagsArray.length > 0 || [undefined, null, ""].includes(tagsArray) || tagsArray == "" ? <></> : <>
                                         {tagsArray.map((val, i) => (
                                             <Fragment key={i}>
                                                 <li>

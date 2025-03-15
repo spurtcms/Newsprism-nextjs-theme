@@ -11,7 +11,9 @@ $AdditionalData: EntriesAdditionalData
       entryFilter:$entryFilter,
       AdditionalData:$AdditionalData)
     {
+      count
       channelEntriesList{
+       
         id
         title
         slug
@@ -341,6 +343,4 @@ $slug: String
     status
   }
 }
-
-
 `
